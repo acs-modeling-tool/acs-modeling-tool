@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!DOCTYPE xml>
+
+<plugin>
+	<extension name="org.eclipse.papyrus.acs.constraintProviders" point="org.eclipse.emf.validation.constraintProviders">
+		<!-- This category shows up in "Window > Preferences" > "Model Validation > Constraints" within Papyrus -->
+     	<category id="org.eclipse.papyrus.acs.category" mandatory="false" name="ACS Validation"/>   
+     	<constraintProvider cache="false" mode="Batch">
+	         <package namespaceUri="http://Papyrus/AcsProfile"/>
+	         <constraints categories="org.eclipse.papyrus.acs.category">
+	         	<!-- The name given in "name" below shows up in the menu descibed in the comment above -->
+	            <constraint id="constraint.structure_validation" isEnabledByDefault="true" lang="Java" mode="Batch" severity="ERROR" statusCode="3" name="Structure Validation"
+        		class="org.eclipse.papyrus.acs.validation.StructureValidation">
+               		<message>{0}</message>
+	            </constraint>                                                                                                                  
+     		</constraints>
+    	</constraintProvider>
+  	</extension>
+ 	<extension name="org.eclipse.papyrus.acs.constraintBindings" point="org.eclipse.emf.validation.constraintBindings">
+		<clientContext id="StructureValidation">
+	 		<selector class="org.eclipse.papyrus.acs.validation.StructureValidationSelector"/>
+	  	</clientContext>
+	  	<binding context="StructureValidation">
+	 		<constraint ref="org.eclipse.papyrus.acs.validation.constraint.structure_validation"/>
+	  	</binding>  
+ 	</extension>     
+</plugin>

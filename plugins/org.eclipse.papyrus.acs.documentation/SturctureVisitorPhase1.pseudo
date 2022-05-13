@@ -1,0 +1,239 @@
+/*
+* Information of note: These algorithms require/assume some filled environments.
+* These will be globally available for the algorithms as they are filled up over time.
+* Environments:
+*   envSY: Maps system names to system data. This includes atomic systems, composites, references and SOIs
+*   envL: Maps link names to the link definition. Contains cardinality, connection type and port names
+*   envTY: Contains type information.
+* Final point: There are a few global values beside the environments from the prior phase.
+* There is a list of visited dependencies, to avoid circularity.
+* There is a list of error messages.
+
+* Some names may have to be changed, due to unfinished terminology.
+*/
+
+class StructureVisitor {
+    void VisitNode(ModelNode node){
+        foreach(SoINode soi in node.Dependencies){
+            VisitNode(soi);
+        }
+    }
+
+    void VisitNode(SoINode node){
+        if (node.Subsystems.length < 2)
+            Add new Exception($"Error in SoI {node.name}: Insufficient number of subsystems");
+        foreach (string interface in node.interfaces){
+            if(node.Subsystems not contains interface)
+                Add new Exception($"Error in SoI {node.name}: No subsystem with interface name {interface}");
+            if(interface is in node.subsystems && interface is not AtomicSystemNode)
+                Add new Exception($"Error in SoI {node.name}: Designated interface {interface} is not an atomic system");
+        }
+        foreach (string boundary in node.boundaryLinks){
+            if(node.Links not contains boundary)
+                Add new Exception($"Error in SoI {node.name}: No Link with name {boundary}");
+        }
+        envSY[node.name] = (node.boundaryLinks, node.interfaces, node.Links.Select(x => x.name),
+                            node.Subsystems.Select(x => x.name));
+        foreach(SSMNode child in node.Subsystems){
+            VisitNode(child);
+        }
+        foreach(LinkNode link in node.Links){
+            VisitNode(Links);
+        }
+        
+    }
+
+    void VisitNode(CompositeNode node){
+        if (node.Subsystems.length < 2)
+            Add new Exception($"Error in Composite {node.name}: Insufficient number of subsystems");
+        if (node.interfaces.length == 0)
+            Add new Exception($"Error in Composite {node.name}: Composites must have at least one interface.");
+        foreach (string interface in node.interfaces){
+            if(node.Subsystems not contains interface)
+                Add new Exception($"Error in Composite {node.name}: No subsystem with interface name {interface}");
+            if(interface is in node.subsystems && interface is not AtomicSystemNode)
+                Add new Exception($"Error in Composite {node.name}: Designated interface {interface} is not an atomic system");
+        }
+        foreach (string boundary in node.boundaryLinks){
+            if(node.Links not contains boundary)
+                Add new Exception($"Error in Composite {node.name}: No Link with name {boundary}");
+        }
+        envSY[node.name] = (node.boundaryLinks, node.interfaces, node.Links.Select(x => x.name),
+                            node.Subsystems.Select(x => x.name), node.Cardinality);
+        foreach(SSMNode child in node.Subsystems){
+            VisitNode(child);
+        }
+        foreach(LinkNode link in node.Links){
+            VisitNode(Links);
+        }
+    }
+
+    void VisitNode(AtomicSystemNode node){
+        if(node.EventDeclarations.length == 0)
+            Add new Exception($"Error in Atomic System {node.name}: Needs at least 1 event declaration");
+        foreach(EventDeclNode edecl in node.EventDeclarations){
+            if(edecl.CommunicatorNode is not null)
+                VisitNode(edecl.CommunicatorNode);
+        }
+        VisitNode(node.ControllerNode);
+        envSY[node.name] = (node.EventDeclarations, node.Cardinality, node.TypeDeclarations;
+    }
+
+    void VisitNode(ReferenceNode node){
+        envSY[node.name] = (node.Cardinality, node.Dependency, node.BoundaryLinks);
+    }
+
+    void VisitNode(LinkNode node){
+        if(node.LinkConnections.length < 2 && node.LinkConnections.SingleOrError().ConnectionType != CTP.SelfReferential)
+            Add new Exception($"Error in Link {node.name}: Insufficient number of link connections or errornious connection type");
+        if(!node.LinkConnections.Select(x => x.ConnectionType).Contains(ConnectionType.Active || ConnectionType.SelfReferential))
+            Add new Exception($"Error in Link {node.name}: Link does not have any link connections capable of starting communication. Missing an active or self-referential connection.");
+        List<Port> Ports;
+        List<Port> Unmarked;
+        set<ConnectionTypes> ctps;
+        foreach(LinkConnection LC in node.LinkConnections){
+            if(Ports.Contains(LC.Port)){
+                    Add new Exception($"Error in Link {node.name}: Multipe link connections to subsystem {LC.Port.name}");
+            }else{
+                Ports.Add(LC.Port);
+                ctps.Add(LC.ConnectionType);
+                if (LC.Cardinality == null)
+                    if(LC.ConnectionType != ConnectionTypes.Active)
+                        Add new Exception($"Error in Link {node.name}: Invalid unmarked cardinality for connection to {LC.port.name}");
+                    Unmarked.Add(LC.Port);
+            }
+        }
+        if(Unmarked.length > 0){
+            if(Unmarked.length > 1)
+                Add new Exception($"Error in Link {node.name}: Multiple unmarked cardinalities detected.");
+            if(ctps.filter(x => x == ConnectionTypes.Active || x == ConnectionTypes.SelfReferential).length != 1)
+                Add new Exception($"Error in Link {node.name}: Multiple active connections detected. Cannot use unmarked cardinality.");
+        }
+        envLNK[node.name] = (node.LinkConnection.foreach(x => x.Select(y => y.Port)),
+                            node.LinkConnection.foreach(x => x.Select(y => y.Cardinality)),
+                            node.LinkConnection.foreach(x => x.Select(y => y.ConnectionType)));
+    }
+
+    void VisitNode(ControllerNode node){
+        if(node.States.length < 2)
+            Add new Exception($"Error in Controller for atomic system {node.parent.name}: There must be at least 2 states.")
+        if(node.Transitions.length < 1)
+            Add new Exception($"Error in Controller for atomic system {node.parent.name}: There must be at least 1 Transition.")
+        if(!node.States.Filter(x => x is a InitialState).length != 1)
+            Add new Exception($"Error in Controller for atomic system {node.parent.name}: There must be a single initial state.")
+        foreach(State s in node.States){
+            if(node.Transitions.Filter(x => x.source == s).length == 0)
+                Add new Exception($"Error in Controller for atomic system {node.parent.name}: There are is no way to leave state {s.name}.");
+            if(node.Transitions.Filter(x => x.destination == s).length == 0)
+                Add new Exception($"Error in Controller for atomic system {node.parent.name}: There is no way to ender state {s.name}.");
+            }
+        }
+        foreach(ActionTransition T in node.Transitions){
+            if(T.source not in node.States)
+                Add new Exception($"Error in Controller for atomic system {node.parent.name}: Source state {T.Source.name} does not exist");
+            if(T.destination not in node.States)
+                Add new Exception($"Error in Controller for atomic system {node.parent.name}: Destination state {T.destination.name} does not exist.");
+        }
+    }
+
+    void VisitNode(CommunicatorNode node){
+       VisitNode(node.MainMachine);
+       foreach(CommunicatorConstructNode CC in node.CommunicatorConstructs){
+            if(CC is a MachineNode mac)
+                VisitNode(mac);
+            else if(CC is a FunctionNode func)
+                if(func.Input.length == 0 && func.Output.length == 0)
+                    Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: Function {func.name} has no input or output. One is required.")
+
+        
+       }
+
+    }
+
+    void VisitNode(MachineNode node){
+        if(node.States.length < 2)
+            Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: There must be at least 2 states.")
+        if(node.Transitions.length < 1)
+            Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: There must be at least 1 Transition.")
+        if(!node.States.Filter(x => x is a InitialState).length != 1)
+            Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: There must be a single initial state.")
+        if(!node.States.Filter(x => x is a EndState).length == 0)
+            Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: There must be at least one end state.")
+        foreach(State s in node.States){
+            if (s is a InitialState){
+                if(node.Transitions.Any(x => x.destination == s))
+                    Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: Transition enters initial state.")
+            } else if (s is a EndState){
+                if(node.Transition.Any(x => x.source == s))
+                    Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: Transition leaves end state.")
+
+            }else{
+                if(node.Transitions.Filter(x => x.source == s).length == 0)
+                    Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: There are is no way to leave state {s.name}.");
+                if(node.Transitions.Filter(x => x.destination == s).length == 0)
+                    Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: There is no way to ender state {s.name}.");
+            }
+        }
+        foreach(ActionTransition T in node.Transitions){
+            if(T.source not in node.States)
+                Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: Source state {T.Source.name} does not exist");
+            if(T.destination not in node.States)
+                Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: Destination state {T.destination.name} does not exist.");
+            if(T.ManyMessages && !T.ManyTargets)
+                Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: Error in Transition {T.name}. Cannot send multiple messages to a single target.");
+            if(T.Invocation is a Invocations.Lock){ //Need to check for locks.
+                //We need to check that all future paths 
+                string location = T.Invocation.LockLocation;
+                set<State> visitedStates = {};
+                queue<State> = {t.target};
+                bool foundUnlock = false;
+                while(!queue.isEmpty){
+                    State next = queue.pop();
+                    list<ActionTransition> outbound = node.Transitions.filter(x => x.source = next);
+                    foreach(ActionTransition LT in outbound){
+                        if(LT.Invocation is Invocations.Lock && Lt.Invocation.LockLocation == location){
+                                Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: Encountered repeated lock invocations to {location}. Redundant invocation found leaving {next}");
+                            }
+                        }
+                        if(LT.Invocation is Invocation.Unlock && LT.Invocation.UnlockLocation == location){
+                            foundUnlock = true;
+                            break;
+                        }
+                        queue.Enqueue(LT.destination);
+
+                    }
+                    if(foundUnlock)
+                        break;
+                    visitedStates.Add(next);
+                }
+            }
+            if(T.Invocation is a Invocations.Unlock){ 
+                string location = T.Invocation.UnLockLocation;
+                set<State> visitedStates = {};
+                queue<State> = {t.target};
+                bool foundLock = false;
+                while(!queue.isEmpty){
+                    State next = queue.pop();
+                    list<ActionTransition> inbound = node.Transitions.filter(x => x.destination = next);
+                    foreach(ActionTransition UT in inbound){
+                        if(UT.Invocation is Invocations.Unlock && UT.Invocation.UnlockLocation == location){
+                                Add new Exception($"Error in Communicator for event {node.parent.parent.name} on atomic system {node.parent.parent.parent.name}: Encountered repeated unlock invocations to {location}. Repeated invocation found entering {next} and {T.Destination}");
+                            }
+                        }
+                        if(LT.Invocation is Invocation.Lock && LT.Invocation.UnlockLocation == location){
+                            foundLock = true;
+                            break;
+                        }
+                        queue.Enqueue(LT.destination);
+
+                    }
+                    if(foundLock)
+                        break;
+                    visitedStates.Add(next);
+                }
+            }
+
+        }
+    }
+
+}

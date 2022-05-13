@@ -1,0 +1,8 @@
+* {
+	fillColor:#82A3BD;
+	gradient: white vertical; 
+}
+
+Label {
+	visible: true;
+}

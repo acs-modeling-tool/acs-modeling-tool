@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!DOCTYPE xml>
+
+<plugin>
+   <extension
+         point="org.eclipse.papyrus.infra.services.navigation.navigationContributor">
+      <contributor
+            contributor="org.eclipse.papyrus.acs.navigation.NavigateToConnectedSystem"
+            description="Allow to navigate to connected system"
+            id="org.eclipse.papyrus.acs.navigation.navigatetoconnectedsystem"
+            label="Connected System">
+      </contributor>
+   </extension>
+</plugin>

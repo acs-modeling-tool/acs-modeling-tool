@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.papyrus.acs.rcp.feature"
+      label="%featureName"
+      version="3.0.0.qualifier"
+      provider-name="%providerName"
+      plugin="org.eclipse.papyrus.acs.rcp">
+
+   <description url="https://eclipse.org/papyrus/acs">
+      This feature provides an ACS IDE.
+   </description>
+
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
+      Copyright (c)
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.e4.ui.css.swt.theme" version="0.13.0" match="compatible"/>
+      <import plugin="org.eclipse.ui" version="3.201.0" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.papyrus.acs.rcp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

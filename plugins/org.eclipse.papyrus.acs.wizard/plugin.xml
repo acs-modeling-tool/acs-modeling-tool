@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!DOCTYPE xml>
+
+<plugin>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard category="org.eclipse.papyrus.wizards.category"
+			class="org.eclipse.papyrus.acs.wizard.wizard.NewACSProjectWizard"
+			finalPerspective="org.eclipse.papyrus.acs.perspective"
+			id="org.eclipse.papyrus.acs.wizard.createproject"
+			name="ACS project"
+			project="true">
+		</wizard>
+		<wizard
+			category="org.eclipse.papyrus.wizards.category"
+			class="org.eclipse.papyrus.acs.wizard.wizard.NewACSModelWizard"
+			finalPerspective="org.eclipse.papyrus.acs.perspective"
+			id="org.eclipse.papyrus.acs.wizard.createmodel"
+			name="ACS model">
+		</wizard>
+	</extension>
+
+	<extension point="org.eclipse.papyrus.uml.diagram.wizards.templates">
+		<template
+			di_file="resources/template.acs.di"
+			notation_file="resources/template.acs.notation"
+			file="resources/template.acs.uml"
+			id="org.eclipse.papyrus.acs.wizard.template.acs"
+			language="org.eclipse.papyrus.acs.viewpoint.building"
+			name="A composite definition model">
+		</template>
+	</extension>
+</plugin>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><Composite xmlns="http://www.eclipse.org/xwt/presentation" xmlns:j="clr-namespace:java.lang" xmlns:ppe="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets" xmlns:ppel="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets.layout" xmlns:x="http://www.eclipse.org/xwt">
+            <Composite.layout>
+                        <ppel:PropertiesLayout/>
+            </Composite.layout>
+            <Composite>
+                        <Composite.layout>
+                                    <ppel:PropertiesLayout numColumns="1"/>
+                        </Composite.layout>
+                        <ppe:DoubleEditor input="{Binding}" property="model:Num Range:Min"/>
+                        <ppe:DoubleEditor input="{Binding}" property="model:Num Range:Max"/>
+            </Composite>
+</Composite>

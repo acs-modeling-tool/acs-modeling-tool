@@ -1,0 +1,12 @@
+target "ACS - 2022-03" with source requirements
+
+//manual update
+location "http://download.eclipse.org/releases/2022-03/" eclipse-2022-03 {
+ org.eclipse.equinox.executable.feature.group lazy
+ org.eclipse.jdt.feature.group lazy
+ org.eclipse.platform.feature.group lazy
+}
+
+location "https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2022-03" Papyrus-2022-03 {
+ org.eclipse.papyrus.sdk.feature.feature.group lazy
+}

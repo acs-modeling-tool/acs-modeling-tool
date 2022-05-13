@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>org.eclipse.papyrus.acs</artifactId>
+		<groupId>org.eclipse.papyrus.acs</groupId>
+		<version>3.0.0-SNAPSHOT</version>
+	</parent>	
+	<artifactId>org.eclipse.papyrus.acs.plugins</artifactId>
+	<packaging>pom</packaging>
+	<name>ACS Plug-ins</name>
+	<description>ACS Plug-ins.</description>
+	<modules>
+		<module>org.eclipse.papyrus.acs.perspective</module>
+		<module>org.eclipse.papyrus.acs.architecture</module>
+		<module>org.eclipse.papyrus.acs.documentation</module>
+		<module>org.eclipse.papyrus.acs.css</module>
+		<module>org.eclipse.papyrus.acs.hyperlink</module>
+		<module>org.eclipse.papyrus.acs.newchild</module>
+		<module>org.eclipse.papyrus.acs.navigation</module>
+		<module>org.eclipse.papyrus.acs.palette</module>
+		<module>org.eclipse.papyrus.acs.profile</module>
+		<module>org.eclipse.papyrus.acs.properties</module>
+		<module>org.eclipse.papyrus.acs.validation</module>
+		<module>org.eclipse.papyrus.acs.wizard</module>
+	</modules>
+</project>

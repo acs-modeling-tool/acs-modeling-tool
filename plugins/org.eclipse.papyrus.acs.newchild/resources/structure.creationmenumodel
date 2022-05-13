@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ElementCreationMenuModel:Folder xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ElementCreationMenuModel="http://www.eclipse.org/papyrus/infra/newchild/elementcreationmenumodel" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmi:id="org.eclipse.papyrus.acs.menu" label="ACS Structure" icon="/resources/structure.gif">
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="SoI">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.SoI"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Composite">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.Composite"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Atomic System">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.AtomicSystem"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Reference">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.Reference"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Port">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.Port"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Link Hub">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.LinkHub"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Link Holder">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.LinkHolder"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreateRelationshipMenu" label="Link Connection">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.LinkConnection_Association_UML__Association"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreateRelationshipMenu" label="Interface Connection">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.InterfaceConnection_Association_UML__Association"/>
+  </menu>
+</ElementCreationMenuModel:Folder>

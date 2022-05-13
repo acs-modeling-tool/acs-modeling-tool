@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ElementCreationMenuModel:Folder xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ElementCreationMenuModel="http://www.eclipse.org/papyrus/infra/newchild/elementcreationmenumodel" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmi:id="org.eclipse.papyrus.acs.menu" label="ACS Controller" icon="/resources/controller.gif">
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Start State">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#_FN8yQMIbEey0EqwOiDOHmw"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Intermediate State">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.CONIntermediateState"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreateRelationshipMenu" label="Action Transistion">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.ActionTransition"/>
+  </menu>
+</ElementCreationMenuModel:Folder>

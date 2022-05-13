@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!DOCTYPE xml>
+
+<plugin>
+
+   <extension
+         point="org.eclipse.papyrus.infra.gmfdiag.css.theme">
+      <themeDefinition
+            icon="icons/atomic_big.gif"
+            id="org.eclipse.papyrus.acs.theme"
+            label="ACS Theme">
+      </themeDefinition>
+      <themeContribution
+            id="org.eclipse.papyrus.acs.theme">
+         <stylesheet stylesheetPath="theme/theme_acs.css">
+         </stylesheet>
+      </themeContribution>
+   </extension>
+
+<!-- extensions that show a way to provide an example model (using EMF Tooling) -->
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            id="org.eclipse.papyrus.acs.samplemodel.car"
+            pageImage="icons/atomic_big.gif"
+            wizardID="org.eclipse.papyrus.acs.samplemodel.car">
+         <projectDescriptor
+               contentURI="sample/car/"
+               description="Project containing a car model"
+               name="ACS Model Example Car">
+         </projectDescriptor>
+         <fileToOpen
+               location="sample/car/car.di">
+         </fileToOpen>
+      </example>
+   </extension>
+   
+      <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            id="org.eclipse.papyrus.acs.samplemodel.library"
+            pageImage="icons/atomic_big.gif"
+            wizardID="org.eclipse.papyrus.acs.samplemodel.library">
+         <projectDescriptor
+               contentURI="sample/library/"
+               description="Project containing library model"
+               name="ACS Model Example Library">
+         </projectDescriptor>
+         <fileToOpen
+               location="sample/library/library.di">
+         </fileToOpen>
+      </example>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.eclipse.ui.Examples/org.eclipse.papyrus.examples"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            finalPerspective="org.eclipse.papyrus.infra.core.perspective"
+            icon="icons/atomic_big.gif"
+            id="org.eclipse.papyrus.acs.samplemodel.car"
+            name="ACS Example Model Car"
+            preferredPerspectives="org.eclipse.papyrus.infra.core.perspective"
+            project="true">
+         <description>
+            Create a new Project that contains an example of acs model in Papyrus and open the model in Papyrus
+         </description>
+      </wizard>
+   </extension>
+   
+      <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.eclipse.ui.Examples/org.eclipse.papyrus.examples"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            finalPerspective="org.eclipse.papyrus.infra.core.perspective"
+            icon="icons/atomic_big.gif"
+            id="org.eclipse.papyrus.acs.samplemodel.library"
+            name="ACS Example Model Library"
+            preferredPerspectives="org.eclipse.papyrus.infra.core.perspective"
+            project="true">
+         <description>
+            Create a new Project that contains an example of acs model in Papyrus and open the model in Papyrus
+         </description>
+      </wizard>
+   </extension>
+</plugin>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!DOCTYPE xml>
+
+<plugin>
+	<extension
+			point="org.eclipse.ui.perspectives">
+		<perspective
+				class="org.eclipse.papyrus.acs.perspective.impl.PapyrusACSPerspective"
+				id="org.eclipse.papyrus.acs.perspective"
+				name="Papyrus for ACS">
+		</perspective>
+	</extension>
+	<extension
+			point="org.eclipse.ui.navigator.navigatorContent">
+		<commonWizard
+				type="new"
+				wizardId="org.eclipse.papyrus.acs.wizard.createproject">
+			<enablement>
+				<with variable="activeWorkbenchWindow.activePerspective">
+					<equals value="org.eclipse.papyrus.acs.perspective"/>
+				</with>
+			</enablement>
+		</commonWizard>
+		<commonWizard
+				type="new"
+				wizardId="org.eclipse.papyrus.acs.wizards.createmodel">
+			<enablement>
+				<with variable="activeWorkbenchWindow.activePerspective">
+					<equals value="org.eclipse.papyrus.acs.perspective"/>
+				</with>
+			</enablement>
+		</commonWizard>
+	</extension>
+</plugin>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!DOCTYPE xml>
+
+<plugin>	
+	<extension
+         point="org.eclipse.papyrus.infra.gmfdiag.css.theme">
+      <themeDefinition
+            icon="icons/atomic_big.gif"
+            id="org.eclipse.papyrus.acs.theme"
+            label="ACS Theme">
+      </themeDefinition>
+      <themeContribution
+            id="org.eclipse.papyrus.acs.theme">
+         <stylesheet stylesheetPath="theme/theme_acs.css">
+         </stylesheet>
+      </themeContribution>
+   </extension>
+</plugin>

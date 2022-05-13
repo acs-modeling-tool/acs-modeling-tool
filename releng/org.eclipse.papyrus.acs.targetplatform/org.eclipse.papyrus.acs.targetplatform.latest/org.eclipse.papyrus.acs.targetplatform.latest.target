@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<target name="ACS Latest" sequenceNumber="1648274048">
+<locations>
+	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
+		<repository location="https://download.eclipse.org/releases/latest"/>
+	</location>
+	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="org.eclipse.papyrus.sdk.feature.feature.group" version="0.0.0"/>
+		<repository id="papyrus" location="https://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/master"/>
+	</location>
+</locations>
+</target>

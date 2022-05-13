@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.4"?>
+<!DOCTYPE xml>
+
+<plugin>
+	<extension point="org.eclipse.papyrus.infra.properties.contexts">
+      <context
+            appliedByDefault="true"
+            contextModel="properties/model.ctx"
+            isCustomizable="true"/>
+   </extension>
+   
+   	<extension
+			point="org.eclipse.papyrus.infra.architecture.listeners">
+		<listener
+				class="org.eclipse.papyrus.acs.properties.internal.PropertiesHider">
+		</listener>
+	</extension>
+</plugin>

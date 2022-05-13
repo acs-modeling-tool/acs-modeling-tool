@@ -1,0 +1,49 @@
+[appliedStereotypes~=Intermediate] > * {
+    visible: false;
+}
+
+[appliedStereotypes~=Intermediate] {
+    displayName: true;
+	bold: true;
+}
+
+[appliedStereotypes~=Action] > Label {
+	visible: true;
+}
+
+[appliedStereotypes~=Start] {
+	displayName: false;
+	fillColor: #000000;
+	width: 25;
+	height: 25;
+}
+
+[appliedStereotypes~=Start] > Label {
+	visible: false;
+}
+
+[type="StereotypeLabel"] {
+	visible: false;
+}
+
+[appliedStereotypes~=End] > Label {
+	visible: false;
+}
+
+
+
+
+/*Regions are color coded */
+[appliedStereotypes~=Main] {
+	fillColor: #525252;
+	gradient: #525252 vertical; 
+}
+[appliedStereotypes~=Sub] {
+	fillColor: #b3b3b3;
+	gradient: #b3b3b3 vertical; 
+}
+[appliedStereotypes~=Implicit] {
+	fillColor: #ff6161;
+	gradient: #ff6161 vertical; 
+}
+

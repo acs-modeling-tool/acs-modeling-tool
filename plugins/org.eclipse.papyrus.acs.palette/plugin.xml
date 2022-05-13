@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.4"?>
+<!DOCTYPE xml>
+
+<plugin>
+      
+   
+   <extension point="org.eclipse.papyrus.infra.types.core.elementTypeSetConfiguration">
+      <elementTypeSet clientContextID="org.eclipse.papyrus.infra.services.edit.TypeContext" path="resources/model_shapes.elementtypesconfigurations"/>
+   </extension>
+   
+</plugin>

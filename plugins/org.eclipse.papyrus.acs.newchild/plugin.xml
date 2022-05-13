@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.4"?>
+<!DOCTYPE xml>
+
+<plugin>      
+   <!-- Reister new child menu in Model explorer -->
+   <extension point="org.eclipse.papyrus.infra.newchild">
+      <menuCreationModel model="resources/structure.creationmenumodel"/>
+      <menuCreationModel model="resources/controller.creationmenumodel"/>
+      <menuCreationModel model="resources/event.creationmenumodel"/>
+   </extension>
+</plugin>

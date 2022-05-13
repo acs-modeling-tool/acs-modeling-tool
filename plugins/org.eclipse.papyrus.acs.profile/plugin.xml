@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.0"?><plugin>
+         
+   
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated model.profile -->
+      <package
+            uri="http://Papyrus/AcsProfile"
+            class="org.eclipse.papyrus.acs.profile.model.AcsProfilePackage"
+            genModel="model/model.profile.genmodel"/>
+   </extension>
+         
+   
+   
+   <extension point="org.eclipse.emf.ecore.uri_mapping">
+                  
+      
+      <mapping source="pathmap://ACS_PROFILES/" target="platform:/plugin/org.eclipse.papyrus.acs.profile/model/">
+      </mapping>
+               
+   
+   </extension>
+         
+   
+   
+   <extension point="org.eclipse.uml2.uml.generated_package">
+      <profile location="pathmap://ACS_PROFILES/model.profile.uml#_ztJ-oKj4Eeyv8euO_1z7mA" uri="http://Papyrus/AcsProfile">
+      </profile>
+   </extension>
+         
+   
+   
+   <!-- register the profile so it can be found by the Papyrus Apply profil property view -->
+         
+   
+   <extension point="org.eclipse.papyrus.uml.extensionpoints.UMLProfile">
+                  
+      
+      <profile description="UML Profile ACS" name="ACS Profile" path="pathmap://ACS_PROFILES/model.profile.uml" provider="ACS">
+      </profile>
+               
+   
+   </extension>
+</plugin>

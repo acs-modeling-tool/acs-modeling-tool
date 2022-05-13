@@ -1,0 +1,80 @@
+/*Simplified Composites*/
+/*SoI, Composite, Atomic System, Reference, Hub, Holder*/
+[appliedStereotypes~=SoI],
+[appliedStereotypes~=Composite],
+[appliedStereotypes~=Atomic],
+[appliedStereotypes~=Reference],
+[appliedStereotypes~=Hub],
+[appliedStereotypes~=Holder] {
+	displayName:false;
+	displayIcon:true;
+	elementIcon:false;
+	isNameWrap: true;
+	bold:true;
+}
+
+/*Ports are simplified */
+Port {
+	displayName:false;
+	displayIcon:true;
+	elementIcon:false;
+	isNameWrap: true;
+	bold:true;
+	maskLabel: name;
+}
+
+Port > Label {
+    visible: false;
+}
+
+/*Link Holder, Reference and Atomic System has hidden their contents because they don't contain anything graphically*/
+[appliedStereotypes~=Holder] > * {
+	visible: false;
+}
+[appliedStereotypes~=Holder] > Label {
+	visible: true;
+}
+[appliedStereotypes~=Holder] > Port {
+	visible: true;
+}
+[appliedStereotypes~=Reference] > * {
+	visible: false;
+}
+[appliedStereotypes~=Reference] > Label {
+	visible: true;
+}
+[appliedStereotypes~=Reference] > Port {
+	visible: true;
+}
+[appliedStereotypes~=Atomic] > * {
+	visible: false;
+}
+[appliedStereotypes~=Atomic] > Label {
+	visible: true;
+}
+[appliedStereotypes~=Atomic] > Port {
+	visible: true;
+}
+
+/*Custom appearance for holder*/
+[appliedStereotypes~=Holder] {
+	displayName: false;
+	fillColor: #A1C6D1;
+}
+
+/*Color hints for all the structure elements */
+[appliedStereotypes~=Atomic] {
+	fillColor: #EB4034;
+}
+[appliedStereotypes~=Reference] {
+	fillColor: #34EB7A;
+}
+[appliedStereotypes~=Composite] {
+	fillColor: #EB34E5;
+}
+[appliedStereotypes~=Hub] {
+	fillColor: #162626;
+}
+[appliedStereotypes~=SoI] {
+	fillColor: #82A3BD;
+}
