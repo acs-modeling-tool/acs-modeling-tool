@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.papyrus.acs.documentation.internal.DocumentationGenerator;
 import org.eclipse.papyrus.acs.wizard.ACSConstants;
-import org.eclipse.papyrus.uml.diagram.wizards.Activator;
+import org.eclipse.papyrus.acs.wizard.Activator;
 import org.eclipse.papyrus.uml.diagram.wizards.pages.PapyrusProjectCreationPage;
 import org.eclipse.papyrus.uml.diagram.wizards.pages.SelectArchitectureContextPage;
 import org.eclipse.ui.IWorkbench;
@@ -59,7 +59,7 @@ public class NewACSProjectWizard extends NewACSModelWizard {
 		super.init(workbench, selection);
 		setWindowTitle("Create your ACS project");
 		setMyProjectPage(new PapyrusProjectCreationPage("Choose template: "));
-		setDefaultPageImageDescriptor(Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/structure.gif")); //$NON-NLS-1$
+		setDefaultPageImageDescriptor(Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, " icons/structure.gif")); //$NON-NLS-1$
 	}
 
 
