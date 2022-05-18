@@ -32,9 +32,21 @@ public class IsBetweenPortAndLinkhub implements ConstraintInterface {
 		return linkhubFound && portFound;
 	}
 	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.is_between_port_and_linkhub;
+	}
+	
+	@Override
+	public String getRationale() {
+		String rat = "Link Connection must be between Port and Link Hub.\n"
+				+ "This enforces explicit design for communication.";
+		return rat;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.is_between_port_and_linkhub); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(LinkConnection.class);}};
 	}
 }

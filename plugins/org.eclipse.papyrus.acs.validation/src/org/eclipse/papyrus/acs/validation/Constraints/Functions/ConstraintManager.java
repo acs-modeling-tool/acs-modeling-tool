@@ -5,18 +5,18 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
-import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.ConstraintFunctions;
+import org.eclipse.papyrus.acs.validation.Utils;
 
 public class ConstraintManager {
 	
-	List<ConstraintsEnum> currentConstraints;
-	List<ConstraintInterface> constraintInterfaces;
+	public List<ConstraintsEnum> currentConstraints;
+	public List<ConstraintInterface> constraintInterfaces;
 	String res;
 	
 	public ConstraintManager() {
 		this.currentConstraints = new LinkedList<ConstraintsEnum>();
 		this.res = "";
-		this.constraintInterfaces = ConstraintFunctions.constraintInterfaces;
+		this.constraintInterfaces = Utils.constraintInterfaces;
 	}
 	
 	public String EvaluateTargetConstraints(EObject target){
@@ -24,7 +24,7 @@ public class ConstraintManager {
 		for (ConstraintsEnum constraint: this.currentConstraints) {
 			boolean foundConstraintFunction = false;
 			for (ConstraintInterface constraintinterface: this.constraintInterfaces)
-				if (constraintinterface.getAttachedConstraints().contains(constraint)) {
+				if (constraintinterface.getAttachedConstraintEnum() == constraint) {
 					apply(constraintinterface, target);
 					foundConstraintFunction = true;
 

@@ -59,7 +59,7 @@ public class NewACSProjectWizard extends NewACSModelWizard {
 		super.init(workbench, selection);
 		setWindowTitle("Create your ACS project");
 		setMyProjectPage(new PapyrusProjectCreationPage("Choose template: "));
-		setDefaultPageImageDescriptor(Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, " icons/structure.gif")); //$NON-NLS-1$
+		setDefaultPageImageDescriptor(org.eclipse.papyrus.uml.diagram.wizards.Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/structure.gif")); //$NON-NLS-1$
 	}
 
 

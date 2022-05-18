@@ -32,9 +32,21 @@ public class DoesntCrossSystemBoundry implements ConstraintInterface {
 		return false;
 	}
 	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.doesnt_cross_system_boundry;
+	}
+	
+	@Override
+	public String getRationale() {
+		String rat = "Link Connections should only make dependencies between Systems in their scope.\n"
+				+ "You should use the Interface Connections to talk out of and into Systems, this is to enforce a cleaner structure.";
+		return rat;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.doesnt_cross_system_boundry); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(LinkConnection.class);}};
 	}
 }

@@ -21,10 +21,22 @@ public class ConnectedToAtomicSystemPort implements ConstraintInterface {
 		}
 		return false;
 	}
-
+	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.connected_to_atomic_system_port;
+	}
+	
+	@Override
+	public String getRationale() {
+		String rat = "Interface Connections must be connected to an Atomic System.\n"
+				+ "This system is refered to as the Interface System.\n";
+		return rat;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.connected_to_atomic_system_port); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(InterfaceConnection.class);}};
 	}
 }

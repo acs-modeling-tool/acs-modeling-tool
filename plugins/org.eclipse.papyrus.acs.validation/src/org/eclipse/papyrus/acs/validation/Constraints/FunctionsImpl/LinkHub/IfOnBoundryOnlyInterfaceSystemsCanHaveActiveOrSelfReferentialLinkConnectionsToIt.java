@@ -26,7 +26,7 @@ public class IfOnBoundryOnlyInterfaceSystemsCanHaveActiveOrSelfReferentialLinkCo
 		LinkHub linkhub = (LinkHub) target;
 		Element parent = (Element) linkhub.getBase_Port().eContainer();
 		
-		//Check if linkhub is on boundary system i.e. composite
+		//Check if Link Hub is on boundary system i.e. Composite
 		if (parent.getStereotypeApplications().get(0) instanceof Composite) {
 
 			List<Connector> connectors = null;
@@ -86,10 +86,15 @@ public class IfOnBoundryOnlyInterfaceSystemsCanHaveActiveOrSelfReferentialLinkCo
 		}			
 		return true;
 	}
-
+	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.if_on_boundry_only_interface_systems_can_have_active_or_self_refential_link_connections_to_it;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.if_on_boundry_only_interface_systems_can_have_active_or_self_refential_link_connections_to_it); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(LinkHub.class);}};
 	}
 }

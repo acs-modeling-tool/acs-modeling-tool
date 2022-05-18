@@ -38,8 +38,6 @@ public class Activator extends AbstractUIPlugin {
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		System.out.println("Stop: " + this.getClass().getPackage().getName());
-		ContextConfigurator.showDefault();
-		ContextConfigurator.hideACS();
 		super.stop(context);
 	}
 

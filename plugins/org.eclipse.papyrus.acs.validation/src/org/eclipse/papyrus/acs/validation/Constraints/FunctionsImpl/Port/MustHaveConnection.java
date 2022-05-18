@@ -1,4 +1,4 @@
-package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.LinkConnection;
+package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Port;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -50,15 +50,28 @@ public class MustHaveConnection implements ConstraintInterface {
 		return false;
 	}
 	
-	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.must_have_connection); }};
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.must_have_connection;
 	}
 	
 	public String getErrorMSG(EObject target) {
+		if (target == null)
+			return "Missing Connection";
+		
 		Port port = (Port) target;
 		return "missing connection (on: " + ((ComponentImpl) port.getBase_Port().eContainer()).getName() + ")";
 	}
 	
+	@Override
+	public String getRationale() {
+		String rat = "Dead ends are not allowed, just delete the connection.\n";
+		return rat;
+	}
+	
+	@SuppressWarnings("serial")
+	@Override
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(Port.class);}};
+	}
 }

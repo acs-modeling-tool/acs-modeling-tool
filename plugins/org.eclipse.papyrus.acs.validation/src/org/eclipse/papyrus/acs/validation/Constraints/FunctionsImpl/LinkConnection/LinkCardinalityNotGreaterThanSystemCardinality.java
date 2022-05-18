@@ -89,14 +89,31 @@ public class LinkCardinalityNotGreaterThanSystemCardinality implements Constrain
 		return "Cardinality must be either [0-9]+ or 'N' or '*' nothing else is allowed";
 	}
 	
-	
-	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.link_cardinality_not_greater_than_system_cardinality); }};
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.link_cardinality_not_greater_than_system_cardinality;
 	}
 	
 	public String getErrorMSG(EObject target) {
+		if (target == null)
+			return "Link Cardinality is bad";
 		return checkCardinality((LinkConnection) target);
+	}
+	
+	@Override
+	public String getRationale() {
+		String rat = "We enforce some rules on Link Connections since they are obviously bad.\n"
+				+ "If you put a Cardinality of 5 on some Atomic System (i.e. You have 5 of this system).\n"
+				+ "Then it wouldnt make sense to say that 6 of these five systems talk over the connection.\n"
+				+ "If you put a Cardinality of 2 on some Atomic System (i.e. You have 2 of this system)\n"
+				+ "Then it wouldnt make sense to say that two of these Systems talk to themselves (i.e. self referential)\n"
+				+ "Since the Initating system would need to part of the Reacting systems.";
+		return rat;
+	}
+	
+	@SuppressWarnings("serial")
+	@Override
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(LinkConnection.class);}};
 	}
 }

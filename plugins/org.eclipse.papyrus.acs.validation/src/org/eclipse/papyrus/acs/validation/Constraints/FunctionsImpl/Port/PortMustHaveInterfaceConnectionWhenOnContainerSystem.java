@@ -65,9 +65,14 @@ public class PortMustHaveInterfaceConnectionWhenOnContainerSystem implements Con
 		}
 	}
 	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.port_must_have_interface_connection_when_on_container_system;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.port_must_have_interface_connection_when_on_container_system); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(Port.class);}};
 	}
 }

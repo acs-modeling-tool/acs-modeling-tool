@@ -24,10 +24,22 @@ public class ConnectedToContainerPort implements ConstraintInterface {
 		}
 		return false; 
 	}
-
+	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.connected_to_container_port;
+	}
+	
+	@Override
+	public String getRationale() {
+		String rat = "Interface Connections must be connected to the Port on a Container system (i.e. Composite or SoI).\n"
+				+ "The other end must be connected inside the Container.\n";
+		return rat;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.connected_to_container_port); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(InterfaceConnection.class);}};
 	}
 }

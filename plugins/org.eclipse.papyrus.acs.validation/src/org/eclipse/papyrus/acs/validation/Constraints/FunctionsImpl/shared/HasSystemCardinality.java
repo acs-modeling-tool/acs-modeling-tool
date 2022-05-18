@@ -1,5 +1,6 @@
 package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.shared;
 
+
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -21,10 +22,21 @@ public class HasSystemCardinality implements ConstraintInterface {
 			return ((Reference) target).getCardinality() != null && !((Reference) target).getCardinality().equals("");
 		return true;
 	}
-
+	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.has_system_cardinality;
+	}
+	
+	@Override
+	public String getRationale() {
+		String rat = "A System needs a cardinality for validation.\n";
+		return rat;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.has_system_cardinality); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(Composite.class); add(AtomicSystem.class); add(Reference.class);}};
 	}
 }

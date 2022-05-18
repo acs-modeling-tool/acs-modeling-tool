@@ -22,10 +22,21 @@ public class ContainerPortAndInterfaceConnectionHaveSameParent implements Constr
 			one = (Element) one.eContainer();
 		return one == two;
 	}
-
+	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.container_port_and_interface_connection_have_same_parent;
+	}
+	
+	@Override
+	public String getRationale() {
+		String rat = "This is true when the connected Atomic System is inside the Container (i.e. Composite or SoI).\n";
+		return rat;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.container_port_and_interface_connection_have_same_parent); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(InterfaceConnection.class);}};
 	}
 }

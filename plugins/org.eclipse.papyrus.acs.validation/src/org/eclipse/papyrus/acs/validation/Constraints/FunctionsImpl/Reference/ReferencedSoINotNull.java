@@ -1,5 +1,6 @@
 package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Reference;
 
+
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -14,9 +15,20 @@ public class ReferencedSoINotNull implements ConstraintInterface {
 		return ((Reference) target).getReferenced_soi() != null;
 	}
 	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.referenced_soi_not_null;
+	}
+	
+	@Override
+	public String getRationale() {
+		String rat = "Empty referenced SoI is not allowed (What defualt behaviour did you expect from this?).\n";
+		return rat;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.referenced_soi_not_null); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(Reference.class);}};
 	}
 }

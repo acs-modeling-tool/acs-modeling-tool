@@ -55,10 +55,15 @@ public class MustContainSelfReferentialOrActiveConnection implements ConstraintI
 
 		return containSelfReferential || containActive;
 	}
-
+	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.must_contain_self_referential_or_active_connection;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.must_contain_self_referential_or_active_connection); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(LinkHub.class);}};
 	}
 }

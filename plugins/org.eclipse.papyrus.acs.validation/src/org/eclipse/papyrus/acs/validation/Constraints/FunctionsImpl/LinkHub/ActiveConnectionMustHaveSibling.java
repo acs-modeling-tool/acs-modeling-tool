@@ -59,10 +59,15 @@ public class ActiveConnectionMustHaveSibling implements ConstraintInterface {
 		//Otherwise this test doesnt care
 		return true;
 	}
-
+	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.active_connection_must_have_sibling;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.active_connection_must_have_sibling); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(LinkHub.class);}};
 	}
 }

@@ -36,9 +36,21 @@ public class PortNameMatchHostPortName implements ConstraintInterface {
 		return true;
 	}
 	
+	@Override
+	public ConstraintsEnum getAttachedConstraintEnum() {
+		return ConstraintsEnum.port_name_match_host_port_name;
+	}
+	
+	@Override
+	public String getRationale() {
+		String rat = "If the Reference Port(s) doesn't match the referenced SoI.\n"
+				+ "Then the refference wouldnt be faithful to the Implemented SoI";
+		return rat;
+	}
+	
 	@SuppressWarnings("serial")
 	@Override
-	public LinkedList<ConstraintsEnum> getAttachedConstraints() {
-		return new LinkedList<ConstraintsEnum>(){{ add(ConstraintsEnum.port_name_match_host_port_name); }};
+	public LinkedList<Class<?>> appliesTo() {
+		return new LinkedList<Class<?>> () {{ add(Reference.class);}};
 	}
 }
