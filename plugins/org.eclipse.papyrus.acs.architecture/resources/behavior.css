@@ -7,10 +7,6 @@
 	bold: true;
 }
 
-[appliedStereotypes~=Action] > Label {
-	visible: true;
-}
-
 [appliedStereotypes~=Start] {
 	displayName: false;
 	fillColor: #000000;

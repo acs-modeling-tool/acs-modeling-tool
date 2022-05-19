@@ -8,5 +8,6 @@
       <menuCreationModel model="resources/structure.creationmenumodel"/>
       <menuCreationModel model="resources/controller.creationmenumodel"/>
       <menuCreationModel model="resources/event.creationmenumodel"/>
+      <menuCreationModel model="resources/type.creationmenumodel"/>
    </extension>
 </plugin>

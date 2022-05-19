@@ -13,6 +13,10 @@
 	bold:true;
 }
 
+[appliedStereotypes~=Composite] > Compartment[type=StereotypeBrace], [appliedStereotypes~=Atomic] > Compartment[type=StereotypeBrace], [appliedStereotypes~=Reference] > Compartment[type=StereotypeBrace]{
+	visible:true;
+}
+
 /*Ports are simplified */
 Port {
 	displayName:false;
@@ -23,7 +27,7 @@ Port {
 	maskLabel: name;
 }
 
-Port > Label {
+Port[appliedStereotypes~=Port] > Label {
     visible: false;
 }
 
@@ -55,6 +59,15 @@ Port > Label {
 [appliedStereotypes~=Atomic] > Port {
 	visible: true;
 }
+
+
+[appliedStereotypes~=Connection] > Label {
+	visible: false;
+}
+[appliedStereotypes~=Holder] > Label {
+	visible: false;
+}
+
 
 /*Custom appearance for holder*/
 [appliedStereotypes~=Holder] {
