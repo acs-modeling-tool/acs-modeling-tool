@@ -30,7 +30,7 @@ public class HasSystemCardinality implements ConstraintInterface {
 	
 	@Override
 	public String getRationale() {
-		String rat = "A System needs a cardinality for validation.\n";
+		String rat = "A System needs a cardinality for validation.";
 		return rat;
 	}
 	

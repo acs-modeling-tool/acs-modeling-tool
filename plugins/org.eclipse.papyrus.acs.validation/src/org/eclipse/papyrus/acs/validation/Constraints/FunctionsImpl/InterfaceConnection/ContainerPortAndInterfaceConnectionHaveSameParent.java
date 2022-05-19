@@ -30,7 +30,7 @@ public class ContainerPortAndInterfaceConnectionHaveSameParent implements Constr
 	
 	@Override
 	public String getRationale() {
-		String rat = "This is true when the connected Atomic System is inside the Container (i.e. Composite or SoI).\n";
+		String rat = "This is true when the connected Atomic System is inside the Container (i.e. Composite or SoI).";
 		return rat;
 	}
 	

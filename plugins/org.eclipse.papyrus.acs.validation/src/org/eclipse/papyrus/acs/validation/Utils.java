@@ -5,18 +5,36 @@ import java.util.LinkedList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.acs.profile.model.ACS_Model;
 import org.eclipse.papyrus.acs.profile.model.AtomicSystem;
+import org.eclipse.papyrus.acs.profile.model.COMEndState;
+import org.eclipse.papyrus.acs.profile.model.COMIntermediateState;
+import org.eclipse.papyrus.acs.profile.model.COMStartState;
 import org.eclipse.papyrus.acs.profile.model.Composite;
+import org.eclipse.papyrus.acs.profile.model.Controller;
+import org.eclipse.papyrus.acs.profile.model.Declared_Type;
+import org.eclipse.papyrus.acs.profile.model.EventDeclaration;
+import org.eclipse.papyrus.acs.profile.model.ImplicitMachine;
+import org.eclipse.papyrus.acs.profile.model.CONStartState;
+import org.eclipse.papyrus.acs.profile.model.CONIntermediateState;
+import org.eclipse.papyrus.acs.profile.model.ActionTransition;
 import org.eclipse.papyrus.acs.profile.model.InterfaceConnection;
+import org.eclipse.papyrus.acs.profile.model.InvocationTransition;
 import org.eclipse.papyrus.acs.profile.model.LinkConnection;
 import org.eclipse.papyrus.acs.profile.model.LinkHolder;
 import org.eclipse.papyrus.acs.profile.model.LinkHub;
+import org.eclipse.papyrus.acs.profile.model.Machine;
+import org.eclipse.papyrus.acs.profile.model.MainMachine;
 import org.eclipse.papyrus.acs.profile.model.Port;
 import org.eclipse.papyrus.acs.profile.model.Reference;
 import org.eclipse.papyrus.acs.profile.model.SoI;
+import org.eclipse.papyrus.acs.profile.model.SubMachine;
 import org.eclipse.papyrus.acs.profile.model.System;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.AtomicSystem.ExactlyOnePort;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Composite.AtleastOnePort;
+import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.AllStatesReachable;
+import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.AtleastOneTransition;
+import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.NoStateIsDeadEnd;
+import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.ExactlyOneInitalNode;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceConnection.ConnectedToAtomicSystemPort;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceConnection.ConnectedToContainerPort;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceConnection.ContainerPortAndInterfaceConnectionHaveSameParent;
@@ -26,12 +44,14 @@ import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.LinkConnecti
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.LinkHub.ActiveConnectionMustHaveSibling;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.LinkHub.IfOnBoundryOnlyInterfaceSystemsCanHaveActiveOrSelfReferentialLinkConnectionsToIt;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.LinkHub.MustContainSelfReferentialOrActiveConnection;
+import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Machine.MustBeNoneCyclic;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Port.MustHaveConnection;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Port.PortMustHaveInterfaceConnectionWhenOnContainerSystem;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Reference.PortNameMatchHostPortName;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Reference.ReferencedSoINotNull;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.shared.ContainAtleastTwoSystems;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.shared.HasSystemCardinality;
+import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.shared.MustHaveSourceAndTarget;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.shared.NameCannotStartWithDigit;
 import org.eclipse.uml2.uml.internal.impl.PackageImportImpl;
 
@@ -50,13 +70,40 @@ public abstract class Utils {
 		add(LinkHolder.class); 
 		add(LinkConnection.class); 
 		add(InterfaceConnection.class);
-		}};
+	}};
+		
+	@SuppressWarnings("serial")
+	public static final LinkedList<Class<?>> controller_elements_interface = new LinkedList<Class<?>>(){{ 
+		add(Controller.class); 
+		add(CONStartState.class); 
+		add(CONIntermediateState.class); 
+		add(ActionTransition.class); 
+	}};
 
+	@SuppressWarnings("serial")
+	public static final LinkedList<Class<?>> event_elements_interface = new LinkedList<Class<?>>(){{ 
+		add(InvocationTransition.class);
+		add(COMStartState.class);
+		add(COMIntermediateState.class);
+		add(COMEndState.class);
+		add(Machine.class); 
+		add(SubMachine.class); 
+		add(MainMachine.class); 
+		add(ImplicitMachine.class); 
+	}};
+	
+	@SuppressWarnings("serial")
+	public static final LinkedList<Class<?>> type_elements_interface = new LinkedList<Class<?>>(){{ 
+		add(Declared_Type.class);
+	}};
+
+	
 	@SuppressWarnings({ "serial" })
 	public static final LinkedList<Class<?>> uml_element = new LinkedList<Class<?>>(){{ 
 		add(PackageImportImpl.class); 
-		}};
-			
+	}};
+	
+	/*To get the name of anything I have to get the UML object so this large if-else is sadly needed*/
 	public static String getName(EObject target) {
     	if (target instanceof System)
     		return ((System) target).getBase_Component().getName();
@@ -72,6 +119,32 @@ public abstract class Utils {
     		return ((InterfaceConnection) target).getBase_Connector().getName();
     	else if (target instanceof LinkHub)
     		return ((LinkHub) target).getBase_Port().getName();
+    	else if (target instanceof Controller)
+    		return ((Controller) target).getBase_StateMachine().getName();
+    	else if (target instanceof EventDeclaration)
+    		return ((EventDeclaration) target).getBase_StateMachine().getName();
+    	else if (target instanceof ActionTransition)
+    		return ((ActionTransition) target).getBase_Transition().getName();
+    	else if (target instanceof CONStartState)
+    		return ((CONStartState) target).getBase_Pseudostate().getName();
+    	else if (target instanceof CONIntermediateState)
+    		return ((CONIntermediateState) target).getBase_State().getName();
+    	else if (target instanceof LinkHolder)
+    		return ((LinkHolder) target).getBase_Component().getName();
+    	else if (target instanceof COMStartState)
+    		return ((COMStartState) target).getBase_Pseudostate().getName();
+    	else if (target instanceof COMIntermediateState)
+    		return ((COMIntermediateState) target).getBase_State().getName();
+    	else if (target instanceof COMEndState)
+    		return ((COMEndState) target).getBase_State().getName();
+    	else if (target instanceof Declared_Type)
+    		return ((Declared_Type) target).getBase_Class().getName();
+    	else if (target instanceof MainMachine)
+    		return ((MainMachine) target).getBase_Region().getName();
+    	else if (target instanceof SubMachine)
+    		return ((SubMachine) target).getBase_Region().getName();
+    	else if (target instanceof ImplicitMachine)
+    		return ((ImplicitMachine) target).getBase_Region().getName();
     	else 
     		return "Cannot get name of: " + target.toString();
 	}
@@ -97,6 +170,12 @@ public abstract class Utils {
 			add(new ContainerPortAndInterfaceConnectionHaveSameParent());
 			add(new IfOnBoundryOnlyInterfaceSystemsCanHaveActiveOrSelfReferentialLinkConnectionsToIt());
 			add(new ActiveConnectionMustHaveSibling());
+			add(new AllStatesReachable());
+			add(new NoStateIsDeadEnd());
+			add(new ExactlyOneInitalNode());
+			add(new MustHaveSourceAndTarget());
+			add(new AtleastOneTransition());
+			add(new MustBeNoneCyclic());
 		}
 	};
 
@@ -123,7 +202,7 @@ public abstract class Utils {
 		case connected_to_container_port:
 			return "Must be connected to Port on container System.";
 		case has_system_cardinality:
-			return "Must have a System Cardinality";
+			return "Must have a System Cardinality.";
 		case connected_to_atomic_system_port:
 			return "Must be connected to Atomic System.";
 		case active_connection_must_have_sibling:
@@ -133,7 +212,19 @@ public abstract class Utils {
 		case container_port_and_interface_connection_have_same_parent:
 			return "Port and InterfaceConnection must have same parent.";
 		case if_on_boundry_only_interface_systems_can_have_active_or_self_refential_link_connections_to_it:
-			return "Only Interface systems can have Active or Self referential connections";
+			return "Only Interface systems can have Active or Self referential connections.";
+		case all_states_reachable:
+			return "All states must be reachable (Except inital).";
+		case no_state_is_dead_end:
+			return "Dead end is not allowed.";
+		case exactly_one_inital_node:
+			return "You have two or more inital states, exactly one is required.";
+		case must_have_source_and_target:
+			return "Must have a source and target.";
+		case atleast_one_transistion:
+			return "Must have atleast one transistion.";
+		case must_be_none_cyclic:
+			return "Must be none cyclic.";
 		default:
 			return constraint.name();
 		}

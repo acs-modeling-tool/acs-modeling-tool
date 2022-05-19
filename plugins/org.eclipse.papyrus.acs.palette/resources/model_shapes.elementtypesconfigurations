@@ -369,4 +369,8 @@
     <specializedTypes xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Region_Shape_CN"/>
   </elementTypeConfigurations>
   <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_B3R2gMU-EeyPwa1nLlbLXA" identifier="org.eclipse.papyrus.acs.profile.model.ImplicitMachine_Region_Shape" name="Implicit Machine (Region_Shape)" hint="Region_Shape" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"/>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_p_MlcNa0Eeyf1KvXIQLi_g" identifier="org.eclipse.papyrus.acs.profile.model.Type_Declaration_Class_Shape" name="Type Declaration (Class_Shape)" hint="Class_Shape" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <specializedTypes xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.Declared_Type"/>
+    <specializedTypes xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Class_Shape"/>
+  </elementTypeConfigurations>
 </elementtypesconfigurations:ElementTypeSetConfiguration>

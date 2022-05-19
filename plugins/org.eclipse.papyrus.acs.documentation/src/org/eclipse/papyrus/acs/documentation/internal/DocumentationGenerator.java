@@ -36,6 +36,12 @@ public final class DocumentationGenerator {
 			for (Class<?> clazz : Utils.structure_elements_interface)
 				if (con.appliesTo().contains(clazz))
 					stringbuilder.append(clazz.getSimpleName() + System.lineSeparator());
+			for (Class<?> clazz : Utils.controller_elements_interface)
+				if (con.appliesTo().contains(clazz))
+					stringbuilder.append(clazz.getSimpleName() + System.lineSeparator());
+			for (Class<?> clazz : Utils.event_elements_interface)
+				if (con.appliesTo().contains(clazz))
+					stringbuilder.append(clazz.getSimpleName() + System.lineSeparator());
 	    	stringbuilder.append(System.lineSeparator() + System.lineSeparator());
 		}
 		return stringbuilder.toString();

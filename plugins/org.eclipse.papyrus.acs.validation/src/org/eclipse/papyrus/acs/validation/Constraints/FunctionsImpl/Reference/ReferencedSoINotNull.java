@@ -22,7 +22,7 @@ public class ReferencedSoINotNull implements ConstraintInterface {
 	
 	@Override
 	public String getRationale() {
-		String rat = "Empty referenced SoI is not allowed (What defualt behaviour did you expect from this?).\n";
+		String rat = "Empty referenced SoI is not allowed (What defualt behaviour did you expect from this?).";
 		return rat;
 	}
 	

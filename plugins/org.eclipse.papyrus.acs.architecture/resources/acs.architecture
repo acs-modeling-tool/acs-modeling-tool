@@ -5,7 +5,7 @@
   </stakeholders>
   <concerns xmi:type="architecture:Concern" xmi:id="_cKVYwK8zEeygV7jfrQQPlg" id="org.eclipse.papyrus.acs.system" name="System stability" description="Wants the system to be stable and predictable"/>
   <contexts xmi:type="architecture:ArchitectureDescriptionLanguage" xmi:id="org.eclipse.papyrus.acs.architecture" id="org.eclipse.papyrus.acs.architecture" name="ACS Model" description="The ACS Modeling Language" icon="platform:/plugin/org.eclipse.papyrus.acs.architecture/graphics/acs.gif" extensionPrefix="" creationCommandClass="org.eclipse.papyrus.acs.architecture.acsModelCreationCommand">
-    <viewpoints xmi:type="architecture:ArchitectureViewpoint" xmi:id="org.eclipse.papyrus.acs.analysis" id="org.eclipse.papyrus.acs.viewpoint.building" name="ACS System Building" description="ACS Model" icon="platform:/plugin/org.eclipse.papyrus.acs.architecture/graphics/acs.gif" concerns="_cKVYwK8zEeygV7jfrQQPlg" representationKinds="_81Fp4K6SEeyEr7VulSh-aw _R939UK6aEeyhS8IiU5tNiw _KTmqAMIGEeyS7INz2655hQ"/>
+    <viewpoints xmi:type="architecture:ArchitectureViewpoint" xmi:id="org.eclipse.papyrus.acs.analysis" id="org.eclipse.papyrus.acs.viewpoint.building" name="ACS System Building" description="ACS Model" icon="platform:/plugin/org.eclipse.papyrus.acs.architecture/graphics/acs.gif" concerns="_cKVYwK8zEeygV7jfrQQPlg" representationKinds="_81Fp4K6SEeyEr7VulSh-aw _R939UK6aEeyhS8IiU5tNiw _KTmqAMIGEeyS7INz2655hQ _W2Ux8NbGEey7M4AfLl_UUQ _UUMU8NbdEeyEH-ZAVe-Nfg"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.elementTypes"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.composite/model/compositediagram.elementtypesconfigurations#_tL86sLazEeSbnofizoRSMQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/StandardProfile.elementtypesconfigurations#_jfoLkGT_EeSEqNuV3JpFCA"/>
@@ -64,6 +64,30 @@
         <stereotypes xmi:type="ecore:EClass" href="http://Papyrus/AcsProfile#//AtomicSystem"/>
       </owningRules>
       <palettes xmi:type="paletteconfiguration:PaletteConfiguration" href="platform:/plugin/org.eclipse.papyrus.acs.palette/resources/Event.paletteconfiguration#/"/>
+    </representationKinds>
+    <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" xmi:id="_W2Ux8NbGEey7M4AfLl_UUQ" id="org.eclipse.papyrus.acs.diagram.type_on_as" name="ACS Type Diagram" icon="platform:/plugin/org.eclipse.papyrus.acs.architecture/graphics/diagram_icons/type.gif" implementationID="PapyrusUMLClassDiagram" customStyle="platform:/plugin/org.eclipse.papyrus.acs.architecture/resources/type.css" creationCommandClass="org.eclipse.papyrus.uml.diagram.clazz.CreateClassDiagramCommand">
+      <concerns xmi:type="architecture:Concern" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_HQhf5MSYEeaKZJ_pGfaSiA"/>
+      <modelRules xmi:type="representation:ModelRule" xmi:id="_W2Ux8dbGEey7M4AfLl_UUQ" permit="true" elementMultiplicity="1" multiplicity="1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://Papyrus/AcsProfile#//AtomicSystem"/>
+      </modelRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_W2Ux8tbGEey7M4AfLl_UUQ" permit="true" multiplicity="1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://Papyrus/AcsProfile#//AtomicSystem"/>
+      </owningRules>
+      <palettes xmi:type="paletteconfiguration:PaletteConfiguration" href="platform:/plugin/org.eclipse.papyrus.acs.palette/resources/Type.paletteconfiguration#/"/>
+    </representationKinds>
+    <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" xmi:id="_UUMU8NbdEeyEH-ZAVe-Nfg" id="org.eclipse.papyrus.acs.diagram.type_on_soi" name="ACS Type Diagram" icon="platform:/plugin/org.eclipse.papyrus.acs.architecture/graphics/diagram_icons/type.gif" implementationID="PapyrusUMLClassDiagram" customStyle="platform:/plugin/org.eclipse.papyrus.acs.architecture/resources/type.css" creationCommandClass="org.eclipse.papyrus.uml.diagram.clazz.CreateClassDiagramCommand">
+      <concerns xmi:type="architecture:Concern" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_HQhf5MSYEeaKZJ_pGfaSiA"/>
+      <modelRules xmi:type="representation:ModelRule" xmi:id="_UUMU8dbdEeyEH-ZAVe-Nfg" permit="true" elementMultiplicity="1" multiplicity="1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://Papyrus/AcsProfile#//SoI"/>
+      </modelRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_UUMU8tbdEeyEH-ZAVe-Nfg" permit="true" multiplicity="1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://Papyrus/AcsProfile#//SoI"/>
+      </owningRules>
+      <palettes xmi:type="paletteconfiguration:PaletteConfiguration" href="platform:/plugin/org.eclipse.papyrus.acs.palette/resources/Type.paletteconfiguration#/"/>
     </representationKinds>
     <metamodel xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
     <profiles xmi:type="ecore:EPackage" href="http://Papyrus/AcsProfile#/"/>

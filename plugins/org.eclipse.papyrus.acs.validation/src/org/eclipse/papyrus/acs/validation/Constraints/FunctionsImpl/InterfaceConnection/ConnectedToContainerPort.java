@@ -33,7 +33,7 @@ public class ConnectedToContainerPort implements ConstraintInterface {
 	@Override
 	public String getRationale() {
 		String rat = "Interface Connections must be connected to the Port on a Container system (i.e. Composite or SoI).\n"
-				+ "The other end must be connected inside the Container.\n";
+				+ "The other end must be connected inside the Container.";
 		return rat;
 	}
 	

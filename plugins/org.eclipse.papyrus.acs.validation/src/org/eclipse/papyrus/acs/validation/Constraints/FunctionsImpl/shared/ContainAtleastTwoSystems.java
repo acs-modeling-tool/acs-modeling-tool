@@ -24,7 +24,7 @@ public class ContainAtleastTwoSystems implements ConstraintInterface {
 	
 	@Override
 	public String getRationale() {
-		String rat = "If the abstraction doesn't contain at least two systems the abstraction should be represented by Atomic System instead.\n";
+		String rat = "If the abstraction doesn't contain at least two systems the abstraction should be represented by Atomic System instead.";
 		return rat;
 	}
 	

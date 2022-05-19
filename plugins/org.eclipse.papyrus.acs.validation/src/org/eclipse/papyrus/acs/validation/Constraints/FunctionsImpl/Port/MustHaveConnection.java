@@ -65,7 +65,7 @@ public class MustHaveConnection implements ConstraintInterface {
 	
 	@Override
 	public String getRationale() {
-		String rat = "Dead ends are not allowed, just delete the connection.\n";
+		String rat = "Dead ends are not allowed, just delete the connection.";
 		return rat;
 	}
 	

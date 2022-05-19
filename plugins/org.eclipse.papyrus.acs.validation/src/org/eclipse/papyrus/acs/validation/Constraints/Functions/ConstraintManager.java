@@ -7,6 +7,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Utils;
 
+
+/*Manages all constraints for some target, produces a appropriate output*/
 public class ConstraintManager {
 	
 	public List<ConstraintsEnum> currentConstraints;

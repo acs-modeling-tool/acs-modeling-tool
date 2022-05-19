@@ -18,5 +18,13 @@ public enum ConstraintsEnum {
 	is_between_port_and_linkhub, 
 	doesnt_cross_system_boundry,
 	has_system_cardinality,
-	if_on_boundry_only_interface_systems_can_have_active_or_self_refential_link_connections_to_it
+	if_on_boundry_only_interface_systems_can_have_active_or_self_refential_link_connections_to_it, 
+	controller_is_circuilar, 
+	all_states_reachable, 
+	no_state_is_dead_end, 
+	exactly_one_inital_node, 
+	must_have_source_and_target, 
+	atleast_one_transistion, 
+	not_a_dead_end, 
+	must_be_none_cyclic
 }

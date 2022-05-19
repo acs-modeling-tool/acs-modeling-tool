@@ -19,11 +19,12 @@ Java 11 is required to run the IDE.
 ## How to use
 The user guide documentation is included in ACS. Simply **Download** -> **Run** -> **Create a new ACS project**. The user documentation will be included in a folder beside your models.
 The plugin **org.eclipse.papyrus.acs.documentation** is responsible for building the documentation into the IDE so explore that plugin if you need the documentation and don't want to download the binary.
+You can find the quick guide [here](./plugins/org.eclipse.papyrus.acs.documentation/documentation/quick.md)
 
-## How to Build
+## How to build
 You can build the project using tycho-maven. The maven command: **clean verify** will compile the project and the associated artifacts.
 
-## How to develop
+## How to contribute
  1. Download and install Eclipse Modeling Tools. The last tested version was 2022-03 found [here](https://www.eclipse.org/downloads/packages/release/2022-03/r/eclipse-modeling-tools)
  2. Install papyrus in Eclipse Modeling Tools by going to **Help** -> **Install New Software...** and insert the update site link for Papyrus. The newest version can be found on the eclipse papyrus [website](https://www.eclipse.org/papyrus/download.html) but the latest tested version is: https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2022-03
  3. Install m2e in Eclipse Modeling Tools by going to **Help** -> **Eclipse Marketplace...**  search **"Eclipse m2e project"** and install the result titled **Eclipse m2e - Maven support in Eclipse IDE** read more [here](https://marketplace.eclipse.org/content/eclipse-m2e-maven-support-eclipse-ide)
@@ -36,6 +37,8 @@ You can build the project using tycho-maven. The maven command: **clean verify**
  10. Choose the configuration **Eclipse Application** -> **Run**  and click **Run**
 
 If successful, ACS should open (might take some time) as compiled directly from the source code.
+
+Make a pull request or fork this repository, both are fine by me.
 
 ### Notes
 The project is structured in plugins. Each plugin extends some functionality from Eclipse and Papyrus.
