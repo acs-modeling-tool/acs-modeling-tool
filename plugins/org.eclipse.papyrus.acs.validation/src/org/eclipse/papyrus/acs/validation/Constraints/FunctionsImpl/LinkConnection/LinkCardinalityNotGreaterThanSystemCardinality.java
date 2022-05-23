@@ -96,7 +96,7 @@ public class LinkCardinalityNotGreaterThanSystemCardinality implements Constrain
 	
 	public String getErrorMSG(EObject target) {
 		if (target == null)
-			return "Link Cardinality is bad";
+			return ConstraintInterface.super.getErrorMSG(null);
 		return checkCardinality((LinkConnection) target);
 	}
 	
@@ -104,10 +104,10 @@ public class LinkCardinalityNotGreaterThanSystemCardinality implements Constrain
 	public String getRationale() {
 		String rat = "We enforce some rules on Link Connections since they are obviously bad.\n"
 				+ "If you put a Cardinality of 5 on some Atomic System (i.e. You have 5 of this system).\n"
-				+ "Then it wouldnt make sense to say that 6 of these five systems talk over the connection.\n"
+				+ "Then it wouldn't make sense to say that 6 of these five systems talk over the connection.\n"
 				+ "If you put a Cardinality of 2 on some Atomic System (i.e. You have 2 of this system)\n"
-				+ "Then it wouldnt make sense to say that two of these Systems talk to themselves (i.e. self referential)\n"
-				+ "Since the Initating system would need to part of the Reacting systems.";
+				+ "Then it wouldn't make sense to say that two of these Systems talk to themselves (i.e. self referential)\n"
+				+ "Since the initiating system would need to part of the Reacting systems.";
 		return rat;
 	}
 	

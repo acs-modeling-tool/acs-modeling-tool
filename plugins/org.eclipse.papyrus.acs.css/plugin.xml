@@ -24,35 +24,17 @@
       <example
             id="org.eclipse.papyrus.acs.samplemodel.car"
             pageImage="icons/atomic_big.gif"
-            wizardID="org.eclipse.papyrus.acs.samplemodel.car">
+            wizardID="org.eclipse.papyrus.acs.sample.test">
          <projectDescriptor
-               contentURI="sample/car/"
-               description="Project containing a car model"
-               name="ACS Model Example Car">
+               contentURI="sample/Models/"
+               description="Project containing a sample model"
+               name="ACS Model Example">
          </projectDescriptor>
          <fileToOpen
-               location="sample/car/car.di">
+               location="sample/Models/test.acs.di">
          </fileToOpen>
       </example>
    </extension>
-   
-      <extension
-         point="org.eclipse.emf.common.ui.examples">
-      <example
-            id="org.eclipse.papyrus.acs.samplemodel.library"
-            pageImage="icons/atomic_big.gif"
-            wizardID="org.eclipse.papyrus.acs.samplemodel.library">
-         <projectDescriptor
-               contentURI="sample/library/"
-               description="Project containing library model"
-               name="ACS Model Example Library">
-         </projectDescriptor>
-         <fileToOpen
-               location="sample/library/library.di">
-         </fileToOpen>
-      </example>
-   </extension>
-   
    
    <extension
          point="org.eclipse.ui.newWizards">
@@ -61,29 +43,12 @@
             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
             finalPerspective="org.eclipse.papyrus.infra.core.perspective"
             icon="icons/atomic_big.gif"
-            id="org.eclipse.papyrus.acs.samplemodel.car"
-            name="ACS Example Model Car"
+            id="org.eclipse.papyrus.acs.sample.test"
+            name="ACS Example Model"
             preferredPerspectives="org.eclipse.papyrus.infra.core.perspective"
             project="true">
          <description>
-            Create a new Project that contains an example of acs model in Papyrus and open the model in Papyrus
-         </description>
-      </wizard>
-   </extension>
-   
-      <extension
-         point="org.eclipse.ui.newWizards">
-      <wizard
-            category="org.eclipse.ui.Examples/org.eclipse.papyrus.examples"
-            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-            finalPerspective="org.eclipse.papyrus.infra.core.perspective"
-            icon="icons/atomic_big.gif"
-            id="org.eclipse.papyrus.acs.samplemodel.library"
-            name="ACS Example Model Library"
-            preferredPerspectives="org.eclipse.papyrus.infra.core.perspective"
-            project="true">
-         <description>
-            Create a new Project that contains an example of acs model in Papyrus and open the model in Papyrus
+            Create a new Project that contains an example of an acs model in Papyrus
          </description>
       </wizard>
    </extension>

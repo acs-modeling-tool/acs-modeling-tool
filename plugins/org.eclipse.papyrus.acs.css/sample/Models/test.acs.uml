@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:AcsProfile="http://Papyrus/AcsProfile" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="_nyShkNKZEeyb8oruXd4J4A" name="TestAcs">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_nyShkdKZEeyb8oruXd4J4A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_nyShktKZEeyb8oruXd4J4A">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://ACS_PROFILES/model.profile.uml#_ztJ-oKj4Eeyv8euO_1z7mA"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Component" xmi:id="_qRK-0NKZEeyb8oruXd4J4A" name="School">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_Ftsv8NKbEeyb8oruXd4J4A" name="Port7" aggregation="composite"/>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="__D7moNKaEeyb8oruXd4J4A" name="Link Connection5">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="__D8NsNKaEeyb8oruXd4J4A" role="_Bzv4UNKaEeyb8oruXd4J4A"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="__D8NsdKaEeyb8oruXd4J4A" role="_9qS6MNKaEeyb8oruXd4J4A"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="__3Zq8NKaEeyb8oruXd4J4A" name="Link Connection6">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="__3aSANKaEeyb8oruXd4J4A" role="_9qS6MNKaEeyb8oruXd4J4A"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="__3aSAdKaEeyb8oruXd4J4A" role="_-XohUNKaEeyb8oruXd4J4A"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_GggF4NKbEeyb8oruXd4J4A" name="Link Connection8">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_Gggs8NKbEeyb8oruXd4J4A" role="_9qS6MNKaEeyb8oruXd4J4A"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_Gggs8dKbEeyb8oruXd4J4A" role="_B0mXcNKbEeyb8oruXd4J4A"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_PMVNkNKbEeyb8oruXd4J4A" name="Interface Connection9">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_PMV0oNKbEeyb8oruXd4J4A" role="_-XohUNKaEeyb8oruXd4J4A"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_PMV0odKbEeyb8oruXd4J4A" role="_Ftsv8NKbEeyb8oruXd4J4A"/>
+      </ownedConnector>
+      <packagedElement xmi:type="uml:Component" xmi:id="_uTI_cNKZEeyb8oruXd4J4A" name="IT Administration">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_Bzv4UNKaEeyb8oruXd4J4A" name="Port3" aggregation="composite"/>
+        <ownedConnector xmi:type="uml:Connector" xmi:id="_GjwqsNKaEeyb8oruXd4J4A" name="Link Connection5">
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_Gjyf4NKaEeyb8oruXd4J4A" role="_AcSWINKaEeyb8oruXd4J4A"/>
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_Gjyf4dKaEeyb8oruXd4J4A" role="_EZtN8NKaEeyb8oruXd4J4A"/>
+        </ownedConnector>
+        <ownedConnector xmi:type="uml:Connector" xmi:id="_G8nPkNKaEeyb8oruXd4J4A" name="Link Connection6">
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_G8n2oNKaEeyb8oruXd4J4A" role="_EZtN8NKaEeyb8oruXd4J4A"/>
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_G8n2odKaEeyb8oruXd4J4A" role="_Bi6nANKaEeyb8oruXd4J4A"/>
+        </ownedConnector>
+        <ownedConnector xmi:type="uml:Connector" xmi:id="_I9xPANKaEeyb8oruXd4J4A">
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_I9ydINKaEeyb8oruXd4J4A" role="_Bi6nANKaEeyb8oruXd4J4A"/>
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_I9ydIdKaEeyb8oruXd4J4A" role="_Bzv4UNKaEeyb8oruXd4J4A"/>
+        </ownedConnector>
+        <packagedElement xmi:type="uml:Component" xmi:id="_5FyCoNKZEeyb8oruXd4J4A" name="Support Desk">
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_Bi6nANKaEeyb8oruXd4J4A" name="Port1" aggregation="composite"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Component" xmi:id="_6JCPYNKZEeyb8oruXd4J4A" name="Administrator">
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_AcSWINKaEeyb8oruXd4J4A" name="Port1" aggregation="composite"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Component" xmi:id="_CZiF8NKaEeyb8oruXd4J4A">
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_EZtN8NKaEeyb8oruXd4J4A" name="Link Hub1" aggregation="composite"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_QOLhkNKaEeyb8oruXd4J4A" name="Students">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_-XohUNKaEeyb8oruXd4J4A" name="Port1" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_ooKkMNKaEeyb8oruXd4J4A" name="School">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_B0mXcNKbEeyb8oruXd4J4A" name="Port1" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_2mSr8NKaEeyb8oruXd4J4A">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_9qS6MNKaEeyb8oruXd4J4A" name="Link Hub1" aggregation="composite"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_nyShk9KZEeyb8oruXd4J4A">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nyShlNKZEeyb8oruXd4J4A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://Papyrus/AcsProfile#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://ACS_PROFILES/model.profile.uml#_ztJ-oKj4Eeyv8euO_1z7mA"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_nyShldKZEeyb8oruXd4J4A">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nyShltKZEeyb8oruXd4J4A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://ACS_PROFILES/model.profile.uml#_e7cl8MViEeymCI4nmjQIrw"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://ACS_PROFILES/model.profile.uml#_ztJ-oKj4Eeyv8euO_1z7mA"/>
+    </profileApplication>
+  </uml:Model>
+  <AcsProfile:ACS_Model xmi:id="_nyShl9KZEeyb8oruXd4J4A" base_Model="_nyShkNKZEeyb8oruXd4J4A"/>
+  <AcsProfile:SoI xmi:id="_qSVccNKZEeyb8oruXd4J4A" base_Component="_qRK-0NKZEeyb8oruXd4J4A"/>
+  <AcsProfile:Composite xmi:id="_uTK0oNKZEeyb8oruXd4J4A" base_Component="_uTI_cNKZEeyb8oruXd4J4A"/>
+  <AcsProfile:AtomicSystem xmi:id="_5FzQwNKZEeyb8oruXd4J4A" base_Component="_5FyCoNKZEeyb8oruXd4J4A"/>
+  <AcsProfile:AtomicSystem xmi:id="_6JDdgNKZEeyb8oruXd4J4A" base_Component="_6JCPYNKZEeyb8oruXd4J4A"/>
+  <AcsProfile:Port xmi:id="_AcULUNKaEeyb8oruXd4J4A" base_Port="_AcSWINKaEeyb8oruXd4J4A"/>
+  <AcsProfile:Port xmi:id="_Bi71INKaEeyb8oruXd4J4A" base_Port="_Bi6nANKaEeyb8oruXd4J4A"/>
+  <AcsProfile:Port xmi:id="_BzxGcNKaEeyb8oruXd4J4A" base_Port="_Bzv4UNKaEeyb8oruXd4J4A"/>
+  <AcsProfile:LinkHolder xmi:id="_CZjUENKaEeyb8oruXd4J4A" base_Component="_CZiF8NKaEeyb8oruXd4J4A"/>
+  <AcsProfile:LinkHub xmi:id="_EZucENKaEeyb8oruXd4J4A" base_Port="_EZtN8NKaEeyb8oruXd4J4A"/>
+  <AcsProfile:LinkConnection xmi:id="_GjzG8NKaEeyb8oruXd4J4A" base_Connector="_GjwqsNKaEeyb8oruXd4J4A"/>
+  <AcsProfile:LinkConnection xmi:id="_G8odsNKaEeyb8oruXd4J4A" base_Connector="_G8nPkNKaEeyb8oruXd4J4A"/>
+  <AcsProfile:InterfaceConnection xmi:id="_I9zEMNKaEeyb8oruXd4J4A" base_Connector="_I9xPANKaEeyb8oruXd4J4A"/>
+  <AcsProfile:AtomicSystem xmi:id="_QOMvsNKaEeyb8oruXd4J4A" base_Component="_QOLhkNKaEeyb8oruXd4J4A"/>
+  <AcsProfile:Reference xmi:id="_ooLyUNKaEeyb8oruXd4J4A" base_Component="_ooKkMNKaEeyb8oruXd4J4A" Cardinality="2" referenced_soi="_qSVccNKZEeyb8oruXd4J4A"/>
+  <AcsProfile:LinkHolder xmi:id="_2mTTANKaEeyb8oruXd4J4A" base_Component="_2mSr8NKaEeyb8oruXd4J4A"/>
+  <AcsProfile:LinkHub xmi:id="_9qThQNKaEeyb8oruXd4J4A" base_Port="_9qS6MNKaEeyb8oruXd4J4A"/>
+  <AcsProfile:Port xmi:id="_-XpIYNKaEeyb8oruXd4J4A" base_Port="_-XohUNKaEeyb8oruXd4J4A"/>
+  <AcsProfile:LinkConnection xmi:id="__D80wNKaEeyb8oruXd4J4A" base_Connector="__D7moNKaEeyb8oruXd4J4A"/>
+  <AcsProfile:LinkConnection xmi:id="__3aSAtKaEeyb8oruXd4J4A" base_Connector="__3Zq8NKaEeyb8oruXd4J4A"/>
+  <AcsProfile:Port xmi:id="_B0nlkNKbEeyb8oruXd4J4A" base_Port="_B0mXcNKbEeyb8oruXd4J4A"/>
+  <AcsProfile:Port xmi:id="_Ftt-ENKbEeyb8oruXd4J4A" base_Port="_Ftsv8NKbEeyb8oruXd4J4A"/>
+  <AcsProfile:LinkConnection xmi:id="_Gggs8tKbEeyb8oruXd4J4A" base_Connector="_GggF4NKbEeyb8oruXd4J4A"/>
+  <AcsProfile:InterfaceConnection xmi:id="_PMV0otKbEeyb8oruXd4J4A" base_Connector="_PMVNkNKbEeyb8oruXd4J4A"/>
+</xmi:XMI>

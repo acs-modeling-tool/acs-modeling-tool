@@ -32,7 +32,7 @@ public final class DocumentationGenerator {
 			stringbuilder.append("### ");
 			stringbuilder.append(con.getErrorMSG(null) + System.lineSeparator());
 			stringbuilder.append(con.getRationale() + System.lineSeparator());
-			stringbuilder.append("Applies to: " + System.lineSeparator());	
+			stringbuilder.append("#### Applies to " + System.lineSeparator());	
 			for (Class<?> clazz : Utils.structure_elements_interface)
 				if (con.appliesTo().contains(clazz))
 					stringbuilder.append(clazz.getSimpleName() + System.lineSeparator());

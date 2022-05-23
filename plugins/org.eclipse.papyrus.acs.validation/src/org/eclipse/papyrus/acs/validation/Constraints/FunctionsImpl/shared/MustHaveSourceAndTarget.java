@@ -33,7 +33,7 @@ public class MustHaveSourceAndTarget implements ConstraintInterface {
 	
 	@Override
 	public String getRationale() {
-		String rat = "Cannot have transisiton with no source or target.";
+		String rat = "Cannot have transition with no source or target.";
 		return rat;
 	}
 	

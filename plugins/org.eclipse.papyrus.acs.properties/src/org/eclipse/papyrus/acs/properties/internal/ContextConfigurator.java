@@ -20,7 +20,7 @@ public final class ContextConfigurator {
 	}
 
 	public static void showDefault() {
-		System.out.println("Show defualt tab");
+		System.out.println("Show default tab");
 		if (!showDefault) {
 			setVisibility(DEFAULT_CONTEXTS, true);
 			showDefault = true;
@@ -28,7 +28,7 @@ public final class ContextConfigurator {
 	}
 
 	public static void hideDefault() {
-		System.out.println("Hide defualt tab");
+		System.out.println("Hide default tab");
 		if (showDefault) {
 			setVisibility(DEFAULT_CONTEXTS, false);
 			showDefault = false;

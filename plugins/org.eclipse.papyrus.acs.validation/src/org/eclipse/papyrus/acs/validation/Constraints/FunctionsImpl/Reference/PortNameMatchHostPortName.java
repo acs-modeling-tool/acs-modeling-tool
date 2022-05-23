@@ -44,7 +44,7 @@ public class PortNameMatchHostPortName implements ConstraintInterface {
 	@Override
 	public String getRationale() {
 		String rat = "If the Reference Port(s) doesn't match the referenced SoI.\n"
-				+ "Then the refference wouldnt be faithful to the Implemented SoI";
+				+ "Then the reference wouldn't be faithful to the Implemented SoI";
 		return rat;
 	}
 	

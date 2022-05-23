@@ -22,8 +22,8 @@ public class AtleastOnePort implements ConstraintInterface {
 	
 	@Override
 	public String getRationale() {
-		String rat = "Composites must have atleast one Port.\n"
-				+ "If you give them zero ports they cant communicate with anything and thus meaningless.\n"
+		String rat = "Composites must have at least one Port.\n"
+				+ "If you give them zero ports they can't communicate with anything and thus meaningless.\n"
 				+ "You can give them more ports as they can combine multiple systems in their abstraction.";
 		return rat;
 	}

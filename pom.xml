@@ -183,7 +183,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 					</configuration>
 				</plugin>
 			</plugins>
-		</pluginManagement>	
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -277,35 +277,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-versions-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-surefire-plugin</artifactId>
-				<configuration>
-					<failIfNoTests>false</failIfNoTests>
-					<useUIHarness>true</useUIHarness>
-					<useUIThread>true</useUIThread>
-					<!--<showEclipseLog>true</showEclipseLog> -->
-					<!--<testFailureIgnore>true</testFailureIgnore> -->
-					<argLine>${ui.test.vmargs}</argLine>
-					<bundleStartLevel>
-						<bundle>
-							<id>org.eclipse.equinox.launcher</id>
-							<level>4</level>
-							<autoStart>true</autoStart>
-						</bundle>
-					</bundleStartLevel>
-					<dependencies>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.equinox.ds</artifactId>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.equinox.event</artifactId>
-						</dependency>
-					</dependencies>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>

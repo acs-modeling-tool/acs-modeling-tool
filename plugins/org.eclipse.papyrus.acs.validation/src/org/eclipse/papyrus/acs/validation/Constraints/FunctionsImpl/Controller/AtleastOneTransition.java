@@ -21,12 +21,12 @@ public class AtleastOneTransition implements ConstraintInterface {
 
 	@Override
 	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.atleast_one_transistion;
+		return ConstraintsEnum.atleast_one_transition;
 	}
 	
 	@Override
 	public String getRationale() {
-		String rat = "Must have atleast one transition.";
+		String rat = "Must have at least one transition.";
 		return rat;
 	}
 	

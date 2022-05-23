@@ -34,7 +34,7 @@ import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Composite.At
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.AllStatesReachable;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.AtleastOneTransition;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.NoStateIsDeadEnd;
-import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.ExactlyOneInitalNode;
+import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.ExactlyOneInitialNode;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceConnection.ConnectedToAtomicSystemPort;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceConnection.ConnectedToContainerPort;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceConnection.ContainerPortAndInterfaceConnectionHaveSameParent;
@@ -105,48 +105,55 @@ public abstract class Utils {
 	
 	/*To get the name of anything I have to get the UML object so this large if-else is sadly needed*/
 	public static String getName(EObject target) {
+		String name;
+		
+		if (target == null)
+			return "Cannot get name of null!";
     	if (target instanceof System)
-    		return ((System) target).getBase_Component().getName();
+    		name = ((System) target).getBase_Component().getName();
     	else if (target instanceof SoI)
-    		return ((SoI) target).getBase_Component().getName();
+    		name = ((SoI) target).getBase_Component().getName();
     	else if (target instanceof ACS_Model)
-    		return ((ACS_Model) target).getBase_Model().getName();
+    		name = ((ACS_Model) target).getBase_Model().getName();
     	else if (target instanceof Port)
-    		return ((Port) target).getBase_Port().getName();
+    		name = ((Port) target).getBase_Port().getName();
     	else if (target instanceof LinkConnection)
-    		return ((LinkConnection) target).getBase_Connector().getName();
+    		name = ((LinkConnection) target).getBase_Connector().getName();
     	else if (target instanceof InterfaceConnection)
-    		return ((InterfaceConnection) target).getBase_Connector().getName();
+    		name = ((InterfaceConnection) target).getBase_Connector().getName();
     	else if (target instanceof LinkHub)
-    		return ((LinkHub) target).getBase_Port().getName();
+    		name = ((LinkHub) target).getBase_Port().getName();
     	else if (target instanceof Controller)
-    		return ((Controller) target).getBase_StateMachine().getName();
+    		name = ((Controller) target).getBase_StateMachine().getName();
     	else if (target instanceof EventDeclaration)
-    		return ((EventDeclaration) target).getBase_StateMachine().getName();
+    		name = ((EventDeclaration) target).getBase_StateMachine().getName();
     	else if (target instanceof ActionTransition)
-    		return ((ActionTransition) target).getBase_Transition().getName();
+    		name = ((ActionTransition) target).getBase_Transition().getName();
     	else if (target instanceof CONStartState)
-    		return ((CONStartState) target).getBase_Pseudostate().getName();
+    		name = ((CONStartState) target).getBase_Pseudostate().getName();
     	else if (target instanceof CONIntermediateState)
-    		return ((CONIntermediateState) target).getBase_State().getName();
+    		name = ((CONIntermediateState) target).getBase_State().getName();
     	else if (target instanceof LinkHolder)
-    		return ((LinkHolder) target).getBase_Component().getName();
+    		name = ((LinkHolder) target).getBase_Component().getName();
     	else if (target instanceof COMStartState)
-    		return ((COMStartState) target).getBase_Pseudostate().getName();
+    		name = ((COMStartState) target).getBase_Pseudostate().getName();
     	else if (target instanceof COMIntermediateState)
-    		return ((COMIntermediateState) target).getBase_State().getName();
+    		name = ((COMIntermediateState) target).getBase_State().getName();
     	else if (target instanceof COMEndState)
-    		return ((COMEndState) target).getBase_State().getName();
+    		name = ((COMEndState) target).getBase_State().getName();
     	else if (target instanceof Declared_Type)
-    		return ((Declared_Type) target).getBase_Class().getName();
+    		name = ((Declared_Type) target).getBase_Class().getName();
     	else if (target instanceof MainMachine)
-    		return ((MainMachine) target).getBase_Region().getName();
+    		name = ((MainMachine) target).getBase_Region().getName();
     	else if (target instanceof SubMachine)
-    		return ((SubMachine) target).getBase_Region().getName();
+    		name = ((SubMachine) target).getBase_Region().getName();
     	else if (target instanceof ImplicitMachine)
-    		return ((ImplicitMachine) target).getBase_Region().getName();
+    		name = ((ImplicitMachine) target).getBase_Region().getName();
     	else 
     		return "Cannot get name of: " + target.toString();
+    	if (name == null)
+    		return "Name was null on: " + target.toString();
+    	return name;
 	}
 	
 	@SuppressWarnings("serial")
@@ -172,7 +179,7 @@ public abstract class Utils {
 			add(new ActiveConnectionMustHaveSibling());
 			add(new AllStatesReachable());
 			add(new NoStateIsDeadEnd());
-			add(new ExactlyOneInitalNode());
+			add(new ExactlyOneInitialNode());
 			add(new MustHaveSourceAndTarget());
 			add(new AtleastOneTransition());
 			add(new MustBeNoneCyclic());
@@ -186,11 +193,11 @@ public abstract class Utils {
 		case exactly_one_port:
 			return "Must have exactly one Port.";
 		case contain_atleast_two_systems:
-			return "Must contain atleast two Systems otherwise abstraction is redundant.";
+			return "Must contain at least two Systems otherwise abstraction is redundant.";
 		case atleast_one_port:
-			return "Must have atleast one Port.";
+			return "Must have at least one Port.";
 		case port_name_match_host_port_name:
-			return "Port(s) doesn't match the refenced Port(s).";
+			return "Port(s) doesn't match the hosts Port(s).";
 		case referenced_soi_not_null:
 			return "Referenced SoI must be set.";
 		case is_between_port_and_linkhub:
@@ -198,7 +205,7 @@ public abstract class Utils {
 		case port_must_have_interface_connection_when_on_container_system:
 			return "Must have a Interface Connection.";
 		case doesnt_cross_system_boundry:
-			return "Cannot cross a System boundry.";
+			return "Cannot cross a System boundary.";
 		case connected_to_container_port:
 			return "Must be connected to Port on container System.";
 		case has_system_cardinality:
@@ -214,15 +221,15 @@ public abstract class Utils {
 		case if_on_boundry_only_interface_systems_can_have_active_or_self_refential_link_connections_to_it:
 			return "Only Interface systems can have Active or Self referential connections.";
 		case all_states_reachable:
-			return "All states must be reachable (Except inital).";
+			return "All states must be reachable.";
 		case no_state_is_dead_end:
 			return "Dead end is not allowed.";
-		case exactly_one_inital_node:
-			return "You have two or more inital states, exactly one is required.";
+		case exactly_one_initial_node:
+			return "You have two or more initial states, exactly one is required.";
 		case must_have_source_and_target:
 			return "Must have a source and target.";
-		case atleast_one_transistion:
-			return "Must have atleast one transistion.";
+		case atleast_one_transition:
+			return "Must have at least one transition.";
 		case must_be_none_cyclic:
 			return "Must be none cyclic.";
 		default:

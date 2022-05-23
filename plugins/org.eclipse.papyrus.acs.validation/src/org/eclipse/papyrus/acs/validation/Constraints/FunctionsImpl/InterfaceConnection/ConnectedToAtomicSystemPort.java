@@ -30,7 +30,7 @@ public class ConnectedToAtomicSystemPort implements ConstraintInterface {
 	@Override
 	public String getRationale() {
 		String rat = "Interface Connections must be connected to an Atomic System.\n"
-				+ "This system is refered to as the Interface System.";
+				+ "This system is referred to as the Interface System.";
 		return rat;
 	}
 	

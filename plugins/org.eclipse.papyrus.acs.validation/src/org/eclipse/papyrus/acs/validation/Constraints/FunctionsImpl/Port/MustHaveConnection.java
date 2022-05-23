@@ -57,7 +57,7 @@ public class MustHaveConnection implements ConstraintInterface {
 	
 	public String getErrorMSG(EObject target) {
 		if (target == null)
-			return "Missing Connection";
+			return ConstraintInterface.super.getErrorMSG(null);
 		
 		Port port = (Port) target;
 		return "missing connection (on: " + ((ComponentImpl) port.getBase_Port().eContainer()).getName() + ")";

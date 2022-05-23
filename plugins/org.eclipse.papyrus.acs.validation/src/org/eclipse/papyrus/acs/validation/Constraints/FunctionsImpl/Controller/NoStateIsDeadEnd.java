@@ -61,7 +61,7 @@ public class NoStateIsDeadEnd implements ConstraintInterface {
 	
 	@Override
 	public String getRationale() {
-		String rat = "A deadend is not allowed, must lead to another state.";
+		String rat = "A dead end is not allowed, must lead to another state.";
 		return rat;
 	}
 	

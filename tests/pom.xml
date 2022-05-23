@@ -1,20 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.eclipse.papyrus.acs</groupId>
 		<artifactId>org.eclipse.papyrus.acs</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
 	</parent>
-
 	<artifactId>org.eclipse.papyrus.acs.tests</artifactId>
 	<packaging>pom</packaging>
 	<name>ACS Tests Plug-ins</name>
 	<description>ACS Tests Plug-ins.</description>
-
 	<modules>
+		<module>constraints</module>
 		<module>profile</module>
 	</modules>
+	
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<configuration>
+					<failIfNoTests>true</failIfNoTests>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>true</useUIThread>
+					<!-- Set this true if you need to build and dont wanna fix the tests -->
+					<testFailureIgnore>false</testFailureIgnore>
+					<showEclipseLog>true</showEclipseLog>
+					<jvmArgs>
+						<args>${ui.test.vmargs}</args>
+					</jvmArgs>
+					<bundleStartLevel>
+						<bundle>
+							<id>${component.servicetype}</id>
+							<level>6</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.launcher</id>
+							<level>4</level>
+							<autoStart>true</autoStart>
+						</bundle>
+					</bundleStartLevel>
+					<dependencies>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.apache.felix.scr</artifactId>
+						</dependency>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.eclipse.equinox.event</artifactId>
+						</dependency>
+					</dependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

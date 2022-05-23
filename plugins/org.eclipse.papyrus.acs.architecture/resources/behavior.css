@@ -31,15 +31,14 @@
 
 /*Regions are color coded */
 [appliedStereotypes~=Main] {
-	fillColor: #525252;
-	gradient: #525252 vertical; 
+    fillColor: #A5A5A5;
+    gradient: #A5A5A5 vertical; 
 }
 [appliedStereotypes~=Sub] {
-	fillColor: #b3b3b3;
-	gradient: #b3b3b3 vertical; 
+    fillColor: #c3c3c3;
+    gradient: #c3c3c3 vertical; 
 }
 [appliedStereotypes~=Implicit] {
-	fillColor: #ff6161;
-	gradient: #ff6161 vertical; 
+    fillColor: #ff6161;
+    gradient: #ff6161 vertical; 
 }
-

@@ -22,9 +22,9 @@ public enum ConstraintsEnum {
 	controller_is_circuilar, 
 	all_states_reachable, 
 	no_state_is_dead_end, 
-	exactly_one_inital_node, 
+	exactly_one_initial_node, 
 	must_have_source_and_target, 
-	atleast_one_transistion, 
+	atleast_one_transition, 
 	not_a_dead_end, 
 	must_be_none_cyclic
 }

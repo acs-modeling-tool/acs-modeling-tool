@@ -12,7 +12,7 @@
   <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Machine">
     <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.Machine"/>
   </menu>
-  <menu xsi:type="ElementCreationMenuModel:CreateRelationshipMenu" label="Invocation Transistion">
+  <menu xsi:type="ElementCreationMenuModel:CreateRelationshipMenu" label="Invocation Transition">
     <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../org.eclipse.papyrus.acs.palette/resources/model_shapes.elementtypesconfigurations#org.eclipse.papyrus.acs.profile.model.InvocationTransition"/>
   </menu>
 </ElementCreationMenuModel:Folder>

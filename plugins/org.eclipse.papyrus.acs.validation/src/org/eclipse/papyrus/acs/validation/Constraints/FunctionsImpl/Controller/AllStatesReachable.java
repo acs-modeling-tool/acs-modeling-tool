@@ -13,19 +13,24 @@ import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.Vertex;
 
-
 import org.eclipse.papyrus.acs.profile.model.Controller;
 
 public class AllStatesReachable implements ConstraintInterface {
 
-	@SuppressWarnings("serial")
 	@Override
 	public boolean satisfies(EObject target) {
 		Controller con = (Controller) target;
 		
 		Region r = con.getBase_StateMachine().getRegions().get(0);
+		
+		return UnreachableStates(r) == null;
+	}
+	
+	/*Returns null when all states are reachable*/
+	@SuppressWarnings("serial")
+	public String UnreachableStates(Region r) {
 
-		Vertex initalState = null;
+		Vertex initialState = null;
 		Set<Vertex> intermediatestates  = new LinkedHashSet<Vertex>() {};
 		Set<Transition> transitions = new LinkedHashSet<Transition>() {};
 		
@@ -36,7 +41,7 @@ public class AllStatesReachable implements ConstraintInterface {
 		//Find Initial state
 		for (Vertex v : r.getSubvertices())
 			if (v instanceof Pseudostate) 
-				initalState = v;
+				initialState = v;
 			else if(v instanceof State)
 				intermediatestates.add(v);
 		
@@ -48,7 +53,7 @@ public class AllStatesReachable implements ConstraintInterface {
 		
 		//Seed the states that are reachable from initialState
 		for (Transition trans: transitions)
-			if(trans.getSource() == initalState)
+			if(trans.getSource() == initialState)
 				foundThisRound.add(trans.getTarget());
 
 		
@@ -73,13 +78,32 @@ public class AllStatesReachable implements ConstraintInterface {
 							foundThisRound.add(trans.getTarget());
 		}
 
-		//If we reached all states that exists were good
-		return intermediatestatesCurrentlyReached.equals(intermediatestates);
+		//If all states are reached we return null
+		if (intermediatestatesCurrentlyReached.equals(intermediatestates))
+			return null;
+				
+		intermediatestates.removeAll(intermediatestatesCurrentlyReached);
+		
+		return "Cannot reach all states (e.g. " + intermediatestates.iterator().next() + " is not reachable.";
 	}
 
 	@Override
 	public ConstraintsEnum getAttachedConstraintEnum() {
 		return ConstraintsEnum.all_states_reachable;
+	}
+	
+	@Override
+	public String getErrorMSG(EObject target) {
+		if (target == null)
+			return ConstraintInterface.super.getErrorMSG(null);
+		
+		Controller con = (Controller) target;
+		
+		Region r = con.getBase_StateMachine().getRegions().get(0);
+		String res = UnreachableStates(r);
+		if (res == null)
+			return "";
+		return res;
 	}
 	
 	@Override
