@@ -3,7 +3,9 @@ package org.eclipse.papyrus.acs.documentation;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.eclipse.emf.ecore.EObject;
 
+@SuppressWarnings("unused")
 /**
  * The activator class controls the plug-in life cycle
  */

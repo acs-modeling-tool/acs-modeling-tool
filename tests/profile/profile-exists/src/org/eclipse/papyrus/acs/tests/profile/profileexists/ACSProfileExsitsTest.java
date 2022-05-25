@@ -13,7 +13,10 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.papyrus.uml.service.validation.Activator;
 
+
+@SuppressWarnings("unused")
 public class ACSProfileExsitsTest {
 	
 

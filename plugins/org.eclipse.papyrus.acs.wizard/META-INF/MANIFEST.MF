@@ -5,9 +5,6 @@ Bundle-SymbolicName: org.eclipse.papyrus.acs.wizard;singleton:=true
 Bundle-Version: 3.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.eclipse.ui.ide;bundle-version="[3.18.0,4.0.0)",
- org.eclipse.ui.navigator;bundle-version="[3.10.0,4.0.0)",
- org.eclipse.ui.navigator.resources;bundle-version="[3.8.0,4.0.0)",
- org.eclipse.papyrus.acs.profile;bundle-version="[3.0.0,4.0.0)",
  org.eclipse.papyrus.uml.diagram.wizards;bundle-version="[4.0.0,5.0.0)";visibility:=reexport,
  org.eclipse.papyrus.infra.gmfdiag.common;bundle-version="[4.3.0,5.0.0)",
  org.eclipse.papyrus.infra.core.architecture;bundle-version="[3.1.0,4.0.0)",
@@ -20,7 +17,9 @@ Require-Bundle: org.eclipse.ui.ide;bundle-version="[3.18.0,4.0.0)",
  org.eclipse.papyrus.infra.emf.gmf;bundle-version="[2.1.0,3.0.0)",
  org.eclipse.papyrus.infra.core.architecture;bundle-version="[3.1.0,4.0.0)",
  org.eclipse.papyrus.infra.services.edit;bundle-version="[4.1.0,5.0.0)",
- org.eclipse.papyrus.acs.documentation;bundle-version="[3.0.0,4.0.0)"
+ org.eclipse.papyrus.acs.documentation;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.papyrus.infra.architecture,
+ org.eclipse.uml2.uml;bundle-version="5.5.0"
 Export-Package: org.eclipse.papyrus.acs.wizard,
  org.eclipse.papyrus.acs.wizard.wizard
 Bundle-Vendor: %Bundle-Vendor

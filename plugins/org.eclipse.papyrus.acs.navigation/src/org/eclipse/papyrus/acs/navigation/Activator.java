@@ -4,9 +4,13 @@ package org.eclipse.papyrus.acs.navigation;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+import org.eclipse.papyrus.infra.widgets.util.Constants;
+import org.eclipse.uml2.common.CommonPlugin;
+
 /**
  * The activator class controls the plug-in life cycle
  */
+@SuppressWarnings("unused")
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID

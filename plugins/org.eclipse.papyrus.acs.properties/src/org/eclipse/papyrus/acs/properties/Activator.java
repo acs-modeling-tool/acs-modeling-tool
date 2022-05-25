@@ -4,10 +4,13 @@ import org.eclipse.papyrus.acs.properties.internal.ContextConfigurator;
 import org.eclipse.papyrus.views.properties.runtime.ConfigurationManager;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.eclipse.papyrus.uml.properties.constraints.HasStereotypeConstraint;
+
 
 /**
  * The activator class controls the plug-in life cycle
  */
+@SuppressWarnings("unused")
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID

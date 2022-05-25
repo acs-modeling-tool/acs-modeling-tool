@@ -3,9 +3,12 @@ package org.eclipse.papyrus.acs.wizard;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+import 	org.eclipse.core.databinding.observable.value.ComputedValue;
+
 /**
  * The activator class controls the plug-in life cycle
  */
+@SuppressWarnings("unused")
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
