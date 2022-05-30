@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.papyrus.acs.profile.model.Reference;
 import org.eclipse.uml2.uml.Port;
@@ -37,8 +36,8 @@ public class PortNameMatchHostPortName implements ConstraintInterface {
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.port_name_match_host_port_name;
+	public String getErrorMSG(EObject target) { 
+		return "Port(s) doesn't match the hosts Port(s).";
 	}
 	
 	@Override

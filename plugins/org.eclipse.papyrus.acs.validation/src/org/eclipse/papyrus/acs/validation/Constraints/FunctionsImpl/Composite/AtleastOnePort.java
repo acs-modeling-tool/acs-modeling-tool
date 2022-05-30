@@ -3,7 +3,6 @@ package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Composite;
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.papyrus.acs.profile.model.Composite;
 import org.eclipse.papyrus.acs.profile.model.System;
@@ -16,8 +15,8 @@ public class AtleastOnePort implements ConstraintInterface {
 	}
 
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.atleast_one_port;
+	public String getErrorMSG(EObject target) { 
+		return "Must have at least one Port.";
 	}
 	
 	@Override

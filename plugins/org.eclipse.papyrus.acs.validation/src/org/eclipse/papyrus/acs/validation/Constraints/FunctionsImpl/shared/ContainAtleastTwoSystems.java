@@ -4,7 +4,6 @@ package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.shared;
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.papyrus.acs.profile.model.Composite;
 import org.eclipse.papyrus.acs.profile.model.SoI;
@@ -18,8 +17,8 @@ public class ContainAtleastTwoSystems implements ConstraintInterface {
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.contain_atleast_two_systems;
+	public String getErrorMSG(EObject target) { 
+		return "Must contain at least two Systems otherwise abstraction is redundant.";
 	}
 	
 	@Override

@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
@@ -57,8 +56,8 @@ public class MustContainSelfReferentialOrActiveConnection implements ConstraintI
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.must_contain_self_referential_or_active_connection;
+	public String getErrorMSG(EObject target) { 
+		return "Must have either Self referential or Active connection.";
 	}
 	
 	@SuppressWarnings("serial")

@@ -8,7 +8,6 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.Vertex;
@@ -91,11 +90,6 @@ public class MustBeNoneCyclic implements ConstraintInterface {
 		if (res == null)
 			return "";
 		return hasCycle(transitions, vertices);
-	}
-	
-	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.must_be_none_cyclic;
 	}
 	
 	@Override

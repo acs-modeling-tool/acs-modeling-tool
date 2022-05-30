@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
@@ -56,13 +55,13 @@ public class ActiveConnectionMustHaveSibling implements ConstraintInterface {
 		//If there is an Active connection there must be a sibling
 		if (containActive)
 			return connectorsize > 1;
-		//Otherwise this test doesnt care
+		//Otherwise this test doesn't care
 		return true;
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.active_connection_must_have_sibling;
+	public String getErrorMSG(EObject target) { 
+		return "Needs at least one other connection due to its Active connection.";
 	}
 	
 	@SuppressWarnings("serial")

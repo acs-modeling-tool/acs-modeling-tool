@@ -4,7 +4,6 @@ package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.shared;
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.papyrus.acs.profile.model.AtomicSystem;
 import org.eclipse.papyrus.acs.profile.model.Composite;
@@ -24,8 +23,8 @@ public class HasSystemCardinality implements ConstraintInterface {
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.has_system_cardinality;
+	public String getErrorMSG(EObject target) { 
+		return "Must have a System Cardinality.";
 	}
 	
 	@Override

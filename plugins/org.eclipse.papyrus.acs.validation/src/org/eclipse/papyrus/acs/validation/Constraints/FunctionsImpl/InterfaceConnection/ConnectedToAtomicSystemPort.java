@@ -3,7 +3,6 @@ package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceCo
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Element;
@@ -23,8 +22,8 @@ public class ConnectedToAtomicSystemPort implements ConstraintInterface {
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.connected_to_atomic_system_port;
+	public String getErrorMSG(EObject target) { 
+		return "Must be connected to Atomic System.";
 	}
 	
 	@Override

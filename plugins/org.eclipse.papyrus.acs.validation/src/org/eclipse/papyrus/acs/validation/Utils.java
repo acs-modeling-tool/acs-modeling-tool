@@ -30,6 +30,7 @@ import org.eclipse.papyrus.acs.profile.model.SubMachine;
 import org.eclipse.papyrus.acs.profile.model.System;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.AtomicSystem.ExactlyOnePort;
+import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.CONIntermediateState.NotADeadEnd;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Composite.AtleastOnePort;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.AllStatesReachable;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.AtleastOneTransition;
@@ -103,10 +104,9 @@ public abstract class Utils {
 		add(PackageImportImpl.class); 
 	}};
 	
-	/*To get the name of anything I have to get the UML object so this large if-else is sadly needed*/
+	/*To get the name of anything I have to get the UML object and get the name since that is where the name is stored*/
 	public static String getName(EObject target) {
-		String name;
-		
+		String name = null;
 		if (target == null)
 			return "Cannot get name of null!";
     	if (target instanceof System)
@@ -159,81 +159,58 @@ public abstract class Utils {
 	@SuppressWarnings("serial")
 	public static LinkedList<ConstraintInterface> constraintInterfaces = new LinkedList<ConstraintInterface>() {
 		{
+			/*Atomic System*/
 			add(new ExactlyOnePort());
-			add(new NameCannotStartWithDigit());
-			add(new ContainAtleastTwoSystems());
-			add(new PortNameMatchHostPortName());
+			
+			/*Composite*/
 			add(new AtleastOnePort());
-			add(new ReferencedSoINotNull());
-			add(new HasSystemCardinality());
-			add(new MustHaveConnection());
+
+			/*CONIntermediateState*/
+			add(new NotADeadEnd());
+			
+			/*Controller*/
+			add(new AllStatesReachable());
+			add(new AtleastOneTransition());
+			add(new ExactlyOneInitialNode());
+			add(new NoStateIsDeadEnd());
+
+			/*InterfaceConnection*/
+			add(new ConnectedToAtomicSystemPort());
+			add(new ConnectedToContainerPort());
+			add(new ContainerPortAndInterfaceConnectionHaveSameParent());
+
+			/*Link Connection*/
+			add(new DoesntCrossSystemBoundry());
 			add(new IsBetweenPortAndLinkhub());
 			add(new LinkCardinalityNotGreaterThanSystemCardinality());
-			add(new PortMustHaveInterfaceConnectionWhenOnContainerSystem());
-			add(new DoesntCrossSystemBoundry());
-			add(new ConnectedToContainerPort());
-			add(new ConnectedToAtomicSystemPort());
-			add(new MustContainSelfReferentialOrActiveConnection());
-			add(new ContainerPortAndInterfaceConnectionHaveSameParent());
-			add(new IfOnBoundryOnlyInterfaceSystemsCanHaveActiveOrSelfReferentialLinkConnectionsToIt());
+
+			/*LinkHub*/
 			add(new ActiveConnectionMustHaveSibling());
-			add(new AllStatesReachable());
-			add(new NoStateIsDeadEnd());
-			add(new ExactlyOneInitialNode());
-			add(new MustHaveSourceAndTarget());
-			add(new AtleastOneTransition());
+			add(new IfOnBoundryOnlyInterfaceSystemsCanHaveActiveOrSelfReferentialLinkConnectionsToIt());
+			add(new MustContainSelfReferentialOrActiveConnection());
+
+			/*Machine*/
 			add(new MustBeNoneCyclic());
+
+			/*Port*/
+			add(new MustHaveConnection());
+			add(new PortMustHaveInterfaceConnectionWhenOnContainerSystem());
+
+			/*Reference*/
+			add(new PortNameMatchHostPortName());
+			add(new ReferencedSoINotNull());
+
+			/*Shared*/
+			add(new ContainAtleastTwoSystems());
+			add(new HasSystemCardinality());
+			add(new MustHaveSourceAndTarget());
+			add(new NameCannotStartWithDigit());
 		}
 	};
 
-	public static String getMSG(ConstraintsEnum constraint) {
-		switch (constraint) {
-		case name_cannot_start_with_digit:
-			return "Cannot have digit as first character in name.";
-		case exactly_one_port:
-			return "Must have exactly one Port.";
-		case contain_atleast_two_systems:
-			return "Must contain at least two Systems otherwise abstraction is redundant.";
-		case atleast_one_port:
-			return "Must have at least one Port.";
-		case port_name_match_host_port_name:
-			return "Port(s) doesn't match the hosts Port(s).";
-		case referenced_soi_not_null:
-			return "Referenced SoI must be set.";
-		case is_between_port_and_linkhub:
-			return "Must be placed between Port and Link Hub.";
-		case port_must_have_interface_connection_when_on_container_system:
-			return "Must have a Interface Connection.";
-		case doesnt_cross_system_boundry:
-			return "Cannot cross a System boundary.";
-		case connected_to_container_port:
-			return "Must be connected to Port on container System.";
-		case has_system_cardinality:
-			return "Must have a System Cardinality.";
-		case connected_to_atomic_system_port:
-			return "Must be connected to Atomic System.";
-		case active_connection_must_have_sibling:
-			return "Needs at least one other connection due to its Active connection";
-		case must_contain_self_referential_or_active_connection:
-			return "Must have either Self referential or Active connection.";
-		case container_port_and_interface_connection_have_same_parent:
-			return "Port and InterfaceConnection must have same parent.";
-		case if_on_boundry_only_interface_systems_can_have_active_or_self_refential_link_connections_to_it:
-			return "Only Interface systems can have Active or Self referential connections.";
-		case all_states_reachable:
-			return "All states must be reachable.";
-		case no_state_is_dead_end:
-			return "Dead end is not allowed.";
-		case exactly_one_initial_node:
-			return "You have two or more initial states, exactly one is required.";
-		case must_have_source_and_target:
-			return "Must have a source and target.";
-		case atleast_one_transition:
-			return "Must have at least one transition.";
-		case must_be_none_cyclic:
-			return "Must be none cyclic.";
-		default:
-			return constraint.name();
-		}
+	public static String getMSG(EObject target, ConstraintInterface constraint) {
+		if (target == null)
+			return constraint.getClass().getSimpleName() + "Defines no specfic error msg for null target";
+		return constraint.getClass().getSimpleName() + "Defined no error msg for: " + target.getClass().getSimpleName();
 	}
 }

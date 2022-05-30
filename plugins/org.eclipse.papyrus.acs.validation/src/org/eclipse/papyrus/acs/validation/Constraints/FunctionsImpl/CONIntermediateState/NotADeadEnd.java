@@ -3,7 +3,6 @@ package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.CONIntermed
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Transition;
@@ -26,13 +25,13 @@ public class NotADeadEnd implements ConstraintInterface {
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.not_a_dead_end;
+	public String getErrorMSG(EObject target) { 
+		return "Cannot be a dead end.";
 	}
 	
 	@Override
 	public String getRationale() {
-		String rat = "Cannot be dead end.";
+		String rat = "The controller must be circular so dead ends are not allowed.";
 		return rat;
 	}
 	

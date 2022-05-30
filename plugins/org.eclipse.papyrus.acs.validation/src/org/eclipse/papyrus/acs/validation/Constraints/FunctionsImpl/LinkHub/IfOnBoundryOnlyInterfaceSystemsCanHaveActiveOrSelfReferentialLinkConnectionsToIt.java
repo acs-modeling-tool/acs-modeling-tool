@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
@@ -87,9 +86,10 @@ public class IfOnBoundryOnlyInterfaceSystemsCanHaveActiveOrSelfReferentialLinkCo
 		return true;
 	}
 	
+
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.if_on_boundry_only_interface_systems_can_have_active_or_self_refential_link_connections_to_it;
+	public String getErrorMSG(EObject target) { 
+		return "Only InterfaceSystems can have active or SelfReferential LinkConnections to it.";
 	}
 	
 	@SuppressWarnings("serial")

@@ -4,7 +4,6 @@ package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Reference;
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.papyrus.acs.profile.model.Reference;
 
@@ -16,8 +15,8 @@ public class ReferencedSoINotNull implements ConstraintInterface {
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.referenced_soi_not_null;
+	public String getErrorMSG(EObject target) { 
+		return "Referenced SoI must be set.";
 	}
 	
 	@Override

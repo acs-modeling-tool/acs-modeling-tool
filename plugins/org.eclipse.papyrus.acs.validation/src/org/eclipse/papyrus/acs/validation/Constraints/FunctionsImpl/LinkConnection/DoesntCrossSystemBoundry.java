@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.papyrus.acs.profile.model.LinkConnection;
@@ -33,8 +32,8 @@ public class DoesntCrossSystemBoundry implements ConstraintInterface {
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.doesnt_cross_system_boundry;
+	public String getErrorMSG(EObject target) { 
+		return "Cannot cross a System boundary.";
 	}
 	
 	@Override

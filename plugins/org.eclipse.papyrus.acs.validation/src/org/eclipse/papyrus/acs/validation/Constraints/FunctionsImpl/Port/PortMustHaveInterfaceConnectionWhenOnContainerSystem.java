@@ -8,7 +8,6 @@ import org.eclipse.papyrus.acs.profile.model.Composite;
 import org.eclipse.papyrus.acs.profile.model.InterfaceConnection;
 import org.eclipse.papyrus.acs.profile.model.Port;
 import org.eclipse.papyrus.acs.profile.model.SoI;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
@@ -66,8 +65,15 @@ public class PortMustHaveInterfaceConnectionWhenOnContainerSystem implements Con
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.port_must_have_interface_connection_when_on_container_system;
+	public String getErrorMSG(EObject target) { 
+		return "Must have a Interface Connection.";
+	}
+	
+	@Override
+	public String getRationale() {
+		String rat = "The port must have an InterfaceConnection since the \n"
+				+ "container is just an alias for the underlying Atomic System.";
+		return rat;
 	}
 	
 	@SuppressWarnings("serial")

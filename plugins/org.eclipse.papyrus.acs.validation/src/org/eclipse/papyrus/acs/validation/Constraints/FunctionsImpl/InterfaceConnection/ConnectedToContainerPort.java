@@ -3,7 +3,6 @@ package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceCo
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Element;
@@ -26,8 +25,8 @@ public class ConnectedToContainerPort implements ConstraintInterface {
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.connected_to_container_port;
+	public String getErrorMSG(EObject target) { 
+		return "Must be connected to Port on container System.";
 	}
 	
 	@Override

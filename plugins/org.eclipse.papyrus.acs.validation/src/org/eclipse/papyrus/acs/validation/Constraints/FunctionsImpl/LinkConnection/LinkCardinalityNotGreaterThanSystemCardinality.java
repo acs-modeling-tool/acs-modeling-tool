@@ -3,7 +3,6 @@ package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.LinkConnect
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Element;
@@ -87,11 +86,6 @@ public class LinkCardinalityNotGreaterThanSystemCardinality implements Constrain
 		}
 		//malformed link cardinality
 		return "Cardinality must be either [0-9]+ or 'N' or '*' nothing else is allowed";
-	}
-	
-	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.link_cardinality_not_greater_than_system_cardinality;
 	}
 	
 	public String getErrorMSG(EObject target) {

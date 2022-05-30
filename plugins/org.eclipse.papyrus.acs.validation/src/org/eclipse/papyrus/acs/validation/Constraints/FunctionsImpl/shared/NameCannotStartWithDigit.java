@@ -16,7 +16,6 @@ import org.eclipse.papyrus.acs.profile.model.Port;
 import org.eclipse.papyrus.acs.profile.model.Reference;
 import org.eclipse.papyrus.acs.profile.model.SoI;
 import org.eclipse.papyrus.acs.profile.model.InvocationTransition;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Utils;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 
@@ -28,15 +27,16 @@ public class NameCannotStartWithDigit implements ConstraintInterface {
 		return !Character.isDigit(firstChar);
 	}
 	
-	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.name_cannot_start_with_digit;
-	}
 	
 	@Override
 	public String getRationale() {
 		String rat = "For implementation and compliance reasons we have chosen to disallow this.";
 		return rat;
+	}
+	
+	@Override
+	public String getErrorMSG(EObject target) { 
+		return "Cannot have digit as first character in name.";
 	}
 	
 	@SuppressWarnings("serial")

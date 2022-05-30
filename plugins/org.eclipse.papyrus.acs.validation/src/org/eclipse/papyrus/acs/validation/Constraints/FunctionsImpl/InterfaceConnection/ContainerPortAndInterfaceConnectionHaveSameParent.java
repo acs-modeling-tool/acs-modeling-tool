@@ -3,7 +3,6 @@ package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceCo
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.papyrus.acs.profile.model.AtomicSystem;
@@ -24,8 +23,8 @@ public class ContainerPortAndInterfaceConnectionHaveSameParent implements Constr
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.container_port_and_interface_connection_have_same_parent;
+	public String getErrorMSG(EObject target) { 
+		return "Port and InterfaceConnection must have same parent.";
 	}
 	
 	@Override

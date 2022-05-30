@@ -5,7 +5,6 @@ import org.eclipse.emf.validation.model.IClientSelector;
 
 public class StructureValidationSelector implements IClientSelector {
 
-	
 	@Override
 	public boolean selects(Object stereoApplicationObj) {
 		for (Class<?> type : Utils.uml_element) 

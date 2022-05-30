@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.acs.validation.ConstraintsEnum;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
@@ -55,8 +54,8 @@ public class NoStateIsDeadEnd implements ConstraintInterface {
 	}
 	
 	@Override
-	public ConstraintsEnum getAttachedConstraintEnum() {
-		return ConstraintsEnum.no_state_is_dead_end;
+	public String getErrorMSG(EObject target) { 
+		return "Dead end is not allowed.";
 	}
 	
 	@Override
