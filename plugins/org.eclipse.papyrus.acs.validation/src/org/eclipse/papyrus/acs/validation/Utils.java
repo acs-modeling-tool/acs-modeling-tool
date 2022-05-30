@@ -208,9 +208,7 @@ public abstract class Utils {
 		}
 	};
 
-	public static String getMSG(EObject target, ConstraintInterface constraint) {
-		if (target == null)
-			return constraint.getClass().getSimpleName() + "Defines no specfic error msg for null target";
-		return constraint.getClass().getSimpleName() + "Defined no error msg for: " + target.getClass().getSimpleName();
+	public static String getMSG(ConstraintInterface constraint) {
+		return constraint.getClass().getSimpleName() + " defines no specific error message.";
 	}
 }

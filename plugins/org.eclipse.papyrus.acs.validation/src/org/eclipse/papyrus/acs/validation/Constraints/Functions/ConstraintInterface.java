@@ -14,7 +14,7 @@ public interface ConstraintInterface {
 	 * If target is null the MSG will be a generic error MSG for this constraint
 	 * */
 	public default String getErrorMSG(EObject target) {
-		return Utils.getMSG(target, this);
+		return Utils.getMSG(this);
 	}
 	
 	/*Returns a short description of the rationale behind this constraint*/
