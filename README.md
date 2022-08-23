@@ -56,3 +56,28 @@ After reading, look also at other existing projects to see how they accomplish t
  - [Papyrus SysML](https://git.eclipse.org/c/papyrus/org.eclipse.papyrus-sysml16.git)
 
 If this is your first project, expect the learning curve to be steep, on the order of weeks/months rather than days, since the Eclipse/Papyrus framework is huge.
+
+### License
+Copyright 2022 ACS
+This project is part of ACS
+ACS is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your option)
+any later version. 
+ACS is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details. 
+You should have received a copy of the GNU General Public License along
+with ACS. If not, see [http://www.gnu.org/licenses/](http://www.gnu.org/licenses/ "http://www.gnu.org/licenses/").
+
+### Contributors
+ - Emil Palmelund Voldby 
+ - Jonas Madsen
+ - Sean Kristian Remond Harbo
+ - Michele Albano
+ 
+### Contact
+
+Contact email may or may not be monitored. If you need access, try and reach one of the contributors.
+ - acs-modeling-tool@protonmail.com
