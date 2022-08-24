@@ -19401,6 +19401,34 @@
       <body>==Use &quot;name&quot; as an invocation/action==&#xD;
 While Action Transitions and Invocation Transitions relate to Tokens, Ports, Events, Machines, Functions, Fields in table-based data types, and Declared types (and indirectly more), this has proven both non-user-friendly and overly complex to model explicitly. Thus, actions and invocations are simply represented as strings through the &quot;name&quot; property, since this is visible in a UML diagram.</body>
     </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_zY7yUCPfEe2WZanKy7QBsA">
+      <body>// Copyright 2022 ACS&#xD;
+//&#xD;
+// This file is part of ACS&#xD;
+//&#xD;
+// ACS is free software: you can redistribute it and/or modify it under&#xD;
+// the terms of the GNU General Public License version 3 as published by the&#xD;
+// Free Software Foundation, either version 3 of the License, or (at your option)&#xD;
+// any later version.&#xD;
+//&#xD;
+// ACS is distributed in the hope that it will be useful, but WITHOUT&#xD;
+// ANY WARRANTY; without even the implied warranty of MERCHANTABILITY&#xD;
+// or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General&#xD;
+// Public License for more details.&#xD;
+//&#xD;
+// You should have received a copy of the GNU General Public License along&#xD;
+// with ACS. If not, see http://www.gnu.org/licenses/.&#xD;
+//&#xD;
+// Contributors: &#xD;
+// Emil Palmelund Voldby&#xD;
+// Jonas Madsen&#xD;
+// Sean Kristian Remond Harbo&#xD;
+// Michele Albano&#xD;
+//&#xD;
+// Original repository: https://github.com/acs-modeling-tool/acs-modeling-tool&#xD;
+&#xD;
+</body>
+    </ownedComment>
     <elementImport xmi:type="uml:ElementImport" xmi:id="_PTBnEKj8Eeyv8euO_1z7mA" alias="Component">
       <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
     </elementImport>
