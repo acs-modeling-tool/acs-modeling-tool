@@ -41,12 +41,12 @@ public class ContainerPortAndInterfaceConnectionHaveSameParent implements Constr
 	public boolean satisfies(EObject target) {
 		InterfaceConnection icon = (InterfaceConnection) target;
 		
-		var parentOfAS = getParentOfAtomicSystemEnd(icon);
-		if (parentOfAS.isEmpty())
+		Optional<EObject> parentOfAS = getParentOfAtomicSystemEnd(icon);
+		if (!parentOfAS.isPresent())
 			return true; // Ignore until not malformed
 		
-		var containerAtContainerEnd = getContainerAtContainerEnd(icon);
-		if (containerAtContainerEnd.isEmpty())
+		Optional<EObject> containerAtContainerEnd = getContainerAtContainerEnd(icon);
+		if (!containerAtContainerEnd.isPresent())
 			return true; // Ignore until not malformed
 		
 		return parentOfAS.get() == containerAtContainerEnd.get();

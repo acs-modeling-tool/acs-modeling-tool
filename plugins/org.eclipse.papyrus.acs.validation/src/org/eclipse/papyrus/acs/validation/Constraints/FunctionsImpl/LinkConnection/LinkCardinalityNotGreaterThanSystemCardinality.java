@@ -53,7 +53,7 @@ public class LinkCardinalityNotGreaterThanSystemCardinality implements Constrain
 				.filter(port -> port.getAppliedStereotypes().get(0).getName().equals("Port"))
 				.map(port -> (Element)port.eContainer())
 				.findFirst();
-		if (puresystem.isEmpty())
+		if (!puresystem.isPresent())
 			return "";
 		
 		// If it isn't a Subsystem we don't care

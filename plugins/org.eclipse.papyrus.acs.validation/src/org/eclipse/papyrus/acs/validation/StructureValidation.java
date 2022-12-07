@@ -39,9 +39,9 @@ public class StructureValidation extends AbstractModelConstraint {
 		EObject target = context.getTarget();
 		Optional<EObject> stereotype = ((Element) target).getStereotypeApplications()
 				.stream()
-				.filter(type -> type.getClass().getPackageName().startsWith("org.eclipse.papyrus.acs.profile.model"))
+				.filter(type -> type.getClass().getPackage().getName().startsWith("org.eclipse.papyrus.acs.profile.model"))
 				.findFirst();
-		if (stereotype.isEmpty())
+		if (!stereotype.isPresent())
 			return context.createSuccessStatus();
 		
 		// Evaluate constraints
@@ -50,7 +50,7 @@ public class StructureValidation extends AbstractModelConstraint {
 			if (constraint.accepts(stereotype.get()) && !constraint.satisfies(stereotype.get())) {
 				if (res != "") 
 					res += " \n";
-				res += "• " + constraint.getErrorMSG(stereotype.get());
+				res += "â€¢" + constraint.getErrorMSG(stereotype.get());
 			}
 		
 		return res == "" 

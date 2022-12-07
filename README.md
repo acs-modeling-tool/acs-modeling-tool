@@ -27,8 +27,8 @@ To run directly in the Eclipse IDE, follow the steps below.
 
 
 ## How to contribute
- 1. Download and install Eclipse Modeling Tools. The last tested version was 2022-06 found [here](https://www.eclipse.org/downloads/packages/release/2022-03/r/eclipse-modeling-tools).
- 2. Install papyrus in Eclipse Modeling Tools by going to **Help** -> **Install New Software...** and insert the update site link for Papyrus and select all resulting items/packages for installation. The newest version can be found on the [eclipse papyrus website](https://www.eclipse.org/papyrus/download.html) but the latest tested version is "2022-06".
+ 1. Download and install Eclipse Modeling Tools. The last tested version was 2022-03 found [here](https://www.eclipse.org/downloads/packages/release/2022-03/r/eclipse-modeling-tools).
+ 2. Install papyrus in Eclipse Modeling Tools by going to **Help** -> **Install New Software...** and insert the update site link for Papyrus and select all resulting items/packages for installation. The newest version can be found on the [eclipse papyrus website](https://www.eclipse.org/papyrus/download.html) but the latest tested version is "2022-03".
  3. Install m2e in Eclipse Modeling Tools by going to **Help** -> **Eclipse Marketplace...**  search **"Eclipse m2e project"** and install the result titled **Eclipse m2e - Maven support in Eclipse IDE** read more [here](https://marketplace.eclipse.org/content/eclipse-m2e-maven-support-eclipse-ide).
  4. Clone this repository (i.e. this ACS IDE repository).
  5. Go To **File** -> **Open Projects From File System...** -> **Directory...** navigate to cloned directory and press **Finish**.
