@@ -17,3 +17,4 @@ Eclipse-BundleShape: dir
 Automatic-Module-Name: org.eclipse.papyrus.acs.hyperlink
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.papyrus.acs.hyperlink.Activator
+Import-Package: org.eclipse.papyrus.acs.profile.model

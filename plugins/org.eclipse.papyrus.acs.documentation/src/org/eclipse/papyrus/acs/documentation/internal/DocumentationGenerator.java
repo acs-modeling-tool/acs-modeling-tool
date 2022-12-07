@@ -52,7 +52,7 @@ public final class DocumentationGenerator {
 		stringbuilder.append(first);
     	stringbuilder.append(System.lineSeparator());
 
-		for (ConstraintInterface con : Utils.constraintInterfaces) {
+		for (ConstraintInterface con : Utils.allConstraints) {
 			stringbuilder.append("### ");
 			stringbuilder.append(con.getErrorMSG(null) + System.lineSeparator());
 			stringbuilder.append(con.getRationale() + System.lineSeparator());
@@ -64,6 +64,9 @@ public final class DocumentationGenerator {
 				if (con.appliesTo().contains(clazz))
 					stringbuilder.append(clazz.getSimpleName() + System.lineSeparator());
 			for (Class<?> clazz : Utils.event_elements_interface)
+				if (con.appliesTo().contains(clazz))
+					stringbuilder.append(clazz.getSimpleName() + System.lineSeparator());
+			for (Class<?> clazz : Utils.type_elements_interface)
 				if (con.appliesTo().contains(clazz))
 					stringbuilder.append(clazz.getSimpleName() + System.lineSeparator());
 	    	stringbuilder.append(System.lineSeparator() + System.lineSeparator());

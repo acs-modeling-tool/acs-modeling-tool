@@ -24,6 +24,8 @@
 
 package org.eclipse.papyrus.acs.validation;
 
+import java.util.Optional;
+
 import org.eclipse.emf.validation.model.IClientSelector;
 
 
@@ -31,12 +33,10 @@ public class StructureValidationSelector implements IClientSelector {
 
 	@Override
 	public boolean selects(Object stereoApplicationObj) {
-		for (Class<?> type : Utils.uml_element) 
-		    if (type.isInstance(stereoApplicationObj)) {
-		    	System.out.println("Selected uml_element: " + type.getSimpleName() + " for validation.");
-		        return true;
-		    }
-    	System.out.println("Skipping : " + stereoApplicationObj.toString());
-		return false;
+		Optional<Class<?>> matchingType = Utils.validatable_types
+				.stream()
+				.filter(type -> type.isInstance(stereoApplicationObj))
+				.findFirst();
+	    return matchingType.isPresent();
 	}
 }

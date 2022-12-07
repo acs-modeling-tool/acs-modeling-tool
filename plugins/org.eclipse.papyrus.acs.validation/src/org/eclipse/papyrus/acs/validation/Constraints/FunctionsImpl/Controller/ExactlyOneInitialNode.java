@@ -30,42 +30,28 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.Region;
-import org.eclipse.uml2.uml.Vertex;
-
-
 import org.eclipse.papyrus.acs.profile.model.Controller;
+
 
 public class ExactlyOneInitialNode implements ConstraintInterface {
 
 	@Override
 	public boolean satisfies(EObject target) {
 		Controller con = (Controller) target;
-		Region r = con.getBase_StateMachine().getRegions().get(0);
-
-		Vertex initialState = null;
-				
-		//Find Initial state
-		for (Vertex v : r.getSubvertices())
-			if (v instanceof Pseudostate) {
-				//If we already set a initial state there are more than one
-				if (initialState != null)
-					return false;
-				//Set this as initial
-				initialState = v;
-			}
-		//Apparently only one initial node exists
-		return true;
+		Region region = con.getBase_StateMachine().getRegions().get(0);
+		return region.getSubvertices().stream()
+				.filter(v -> v instanceof Pseudostate)
+				.count() == 1;
 	}
 
 	@Override
 	public String getErrorMSG(EObject target) { 
-		return "You have two or more initial states, exactly one is required.";
+		return "Must have exactly one initial state.";
 	}
 	
 	@Override
 	public String getRationale() {
-		String rat = "We only support exactly one initial node.";
-		return rat;
+		return "A state machine can only have one initial state.";
 	}
 	
 	@SuppressWarnings("serial")

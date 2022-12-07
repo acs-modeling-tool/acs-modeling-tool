@@ -25,10 +25,8 @@
 package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceConnection;
 
 import java.util.LinkedList;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
-import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.papyrus.acs.profile.model.Composite;
 import org.eclipse.papyrus.acs.profile.model.InterfaceConnection;
@@ -38,31 +36,29 @@ public class ConnectedToContainerPort implements ConstraintInterface {
 
 	@Override
 	public boolean satisfies(EObject target) {
-		for (ConnectorEnd end: ((InterfaceConnection) target).getBase_Connector().getEnds()) {
-			EObject element = end.getRole().eContainer();
-			if (((Element)element).getStereotypeApplications().get(0) instanceof Composite)
-				return true;
-			if (((Element)element).getStereotypeApplications().get(0) instanceof SoI)
-				return true;
-		}
-		return false; 
+		return ((InterfaceConnection) target).getBase_Connector()
+				.getEnds().stream()
+				.map(end -> (Element)end.getRole().eContainer())
+				.map(element -> element.getStereotypeApplications().get(0))
+				.anyMatch(stereotype -> 
+					stereotype instanceof Composite || stereotype instanceof SoI
+				);
 	}
 	
 	@Override
 	public String getErrorMSG(EObject target) { 
-		return "Must be connected to Port on container System.";
+		return "One end must be connected to a Port on a container System.";
 	}
 	
 	@Override
 	public String getRationale() {
-		String rat = "Interface Connections must be connected to the Port on a Container system (i.e. Composite or SoI).\n"
-				+ "The other end must be connected inside the Container.";
-		return rat;
+		return "Interface Connections must be connected to the Port on a Container system (i.e. Composite or SoI).\n" +
+			   "The other end must be connected inside the Container.";
 	}
 	
 	@SuppressWarnings("serial")
 	@Override
 	public LinkedList<Class<?>> appliesTo() {
-		return new LinkedList<Class<?>> () {{ add(InterfaceConnection.class);}};
+		return new LinkedList<Class<?>> () {{ add(InterfaceConnection.class); }};
 	}
 }

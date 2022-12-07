@@ -39,7 +39,6 @@ public class IsBetweenPortAndLinkhub implements ConstraintInterface {
 
 	@Override
 	public boolean satisfies(EObject target) {
-
 		LinkConnection link = (LinkConnection) target;
 		List<ConnectorEnd> ends = link.getBase_Connector().getEnds();
 		
@@ -51,8 +50,10 @@ public class IsBetweenPortAndLinkhub implements ConstraintInterface {
 				linkhubFound = true;
 			else if (end.getRole().getStereotypeApplications().get(0) instanceof Port)
 				portFound = true;
+		
 		return linkhubFound && portFound;
 	}
+	
 	
 	@Override
 	public String getErrorMSG(EObject target) { 

@@ -23,47 +23,60 @@
 // Original repository: https://github.com/acs-modeling-tool/acs-modeling-tool
 */
 
-[appliedStereotypes~=Intermediate] > * {
-    visible: false;
-}
-
-[appliedStereotypes~=Intermediate] {
-    displayName: true;
-	bold: true;
-}
-
+/* States */
 [appliedStereotypes~=Start] {
 	displayName: false;
+	transparency: 0;
 	fillColor: #000000;
+    gradient: none; 
 	width: 25;
 	height: 25;
 }
-
+[appliedStereotypes~=Start] > * {
+	transparency: 0;
+	fillColor: #000000;
+    gradient: none; 
+}
+[appliedStereotypes~=Start] > * > * {
+	transparency: 0;
+	fillColor: #000000;
+    gradient: none;
+}
 [appliedStereotypes~=Start] > Label {
 	visible: false;
 }
-
+[appliedStereotypes~=End] > Label {
+	visible: false;
+}
+[appliedStereotypes~=Intermediate] {
+    displayName: false;
+	bold: true;
+}
 [type="StereotypeLabel"] {
 	visible: false;
 }
 
-[appliedStereotypes~=End] > Label {
-	visible: false;
-}
-
-
-
 
 /*Regions are color coded */
+[appliedStereotypes~=Controller] {
+    fillColor: #f7f7f7;
+    gradient: #f7f7f7 vertical; 
+}
 [appliedStereotypes~=Main] {
-    fillColor: #A5A5A5;
-    gradient: #A5A5A5 vertical; 
+    fillColor: #f7f7f7;
+    gradient: #f7f7f7 vertical; 
 }
 [appliedStereotypes~=Sub] {
-    fillColor: #c3c3c3;
-    gradient: #c3c3c3 vertical; 
+    fillColor: #e0e0e0;
+    gradient: #e0e0e0 vertical; 
 }
 [appliedStereotypes~=Implicit] {
     fillColor: #ff6161;
     gradient: #ff6161 vertical; 
+}
+
+
+/* Controllers and Communicators */
+* > Label:Stereotype {
+	visible: false;
 }

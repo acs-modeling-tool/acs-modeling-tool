@@ -37,10 +37,10 @@
 	isNameWrap: true;
 	bold:true;
 }
-
 [appliedStereotypes~=Composite] > Compartment[type=StereotypeBrace], [appliedStereotypes~=Atomic] > Compartment[type=StereotypeBrace], [appliedStereotypes~=Reference] > Compartment[type=StereotypeBrace]{
 	visible:true;
 }
+
 
 /*Ports are simplified */
 Port {
@@ -51,10 +51,10 @@ Port {
 	bold:true;
 	maskLabel: name;
 }
-
 Port[appliedStereotypes~=Port] > Label {
     visible: false;
 }
+
 
 /*Link Holder, Reference and Atomic System has hidden their contents because they don't contain anything graphically*/
 [appliedStereotypes~=Holder] > * {
@@ -86,6 +86,25 @@ Port[appliedStereotypes~=Port] > Label {
 }
 
 
+/* Links, Ports, & Interfaces */
+[appliedStereotypes~=Holder] {
+	displayName: false;
+	gradient: #b8b8b8 vertical;
+	fillColor: #b8b8b8;
+}
+[appliedStereotypes~=Hub] {
+	gradient: #162626 vertical;
+	fillColor: #162626;
+}
+[appliedStereotypes~=Hub] > Label:Stereotype {
+	visible: false;
+}
+[appliedStereotypes~=Port] {
+	fillColor: #FFFFFF;
+}
+[appliedStereotypes~=Interface] {
+	lineStyle: dashed;
+}
 [appliedStereotypes~=Connection] > Label {
 	visible: false;
 }
@@ -94,25 +113,16 @@ Port[appliedStereotypes~=Port] > Label {
 }
 
 
-/*Custom appearance for holder*/
-[appliedStereotypes~=Holder] {
-	displayName: false;
-	fillColor: #A1C6D1;
-}
-
-/*Color hints for all the structure elements */
+/* Systems */
 [appliedStereotypes~=Atomic] {
-	fillColor: #EB4034;
+	fillColor: #FFFFFF;
 }
 [appliedStereotypes~=Reference] {
-	fillColor: #34EB7A;
+	fillColor: #FFFFFF;
 }
 [appliedStereotypes~=Composite] {
-	fillColor: #EB34E5;
-}
-[appliedStereotypes~=Hub] {
-	fillColor: #162626;
+	fillColor: #FFFFFF;
 }
 [appliedStereotypes~=SoI] {
-	fillColor: #82A3BD;
+	fillColor: #FFFFFF;
 }

@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.ui.ide;bundle-version="[3.18.0,4.0.0)",
  org.eclipse.papyrus.infra.services.edit;bundle-version="[4.1.0,5.0.0)",
  org.eclipse.papyrus.acs.documentation;bundle-version="[3.0.0,4.0.0)",
  org.eclipse.papyrus.infra.architecture,
- org.eclipse.uml2.uml;bundle-version="5.5.0"
+ org.eclipse.uml2.uml;bundle-version="5.5.0",
+ org.eclipse.emf.common.ui;bundle-version="2.20.0"
 Export-Package: org.eclipse.papyrus.acs.wizard,
  org.eclipse.papyrus.acs.wizard.wizard
 Bundle-Vendor: %Bundle-Vendor

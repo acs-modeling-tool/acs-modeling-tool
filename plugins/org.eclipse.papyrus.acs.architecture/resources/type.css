@@ -26,3 +26,8 @@
 Class Label {
 	visible: false;
 }
+
+Class {
+	gradient: #FFFFFF vertical;
+	fillColor: #FFFFFF;
+}

@@ -34,12 +34,11 @@ import org.eclipse.uml2.uml.Region;
 import org.eclipse.papyrus.acs.profile.model.Controller;
 
 public class AtleastOneTransition implements ConstraintInterface {
-
 	@Override
 	public boolean satisfies(EObject target) {
 		Controller con = (Controller) target;
-		Region r = con.getBase_StateMachine().getRegions().get(0);
-		return !r.getTransitions().isEmpty();
+		Region region = con.getBase_StateMachine().getRegions().get(0);
+		return !region.getTransitions().isEmpty();
 	}
 
 	@Override
@@ -49,13 +48,12 @@ public class AtleastOneTransition implements ConstraintInterface {
 	
 	@Override
 	public String getRationale() {
-		String rat = "Must have at least one transition.";
-		return rat;
+		return "Must have at least one transition.";
 	}
 	
 	@SuppressWarnings("serial")
 	@Override
 	public LinkedList<Class<?>> appliesTo() {
-		return new LinkedList<Class<?>> () {{ add(Controller.class);}};
+		return new LinkedList<Class<?>> () {{ add(Controller.class); }};
 	}
 }

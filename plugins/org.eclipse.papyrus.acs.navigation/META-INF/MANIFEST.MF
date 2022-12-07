@@ -18,3 +18,4 @@ Bundle-Localization: plugin
 Automatic-Module-Name: org.eclipse.papyrus.acs.navigation
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.papyrus.acs.navigation.Activator
+Import-Package: org.eclipse.papyrus.acs.profile.model

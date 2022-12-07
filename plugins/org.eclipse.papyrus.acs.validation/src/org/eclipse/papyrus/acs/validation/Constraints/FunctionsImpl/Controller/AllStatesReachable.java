@@ -43,91 +43,61 @@ public class AllStatesReachable implements ConstraintInterface {
 	@Override
 	public boolean satisfies(EObject target) {
 		Controller con = (Controller) target;
-		
-		Region r = con.getBase_StateMachine().getRegions().get(0);
-		
-		return UnreachableStates(r) == null;
+		Region region = con.getBase_StateMachine().getRegions().get(0);
+		return UnreachableStates(region) == null;
 	}
 	
 	/*Returns null when all states are reachable*/
-	@SuppressWarnings("serial")
-	public String UnreachableStates(Region r) {
-
+	public String UnreachableStates(Region region) {
+		// Setup initial data
 		Vertex initialState = null;
-		Set<Vertex> intermediatestates  = new LinkedHashSet<Vertex>() {};
-		Set<Transition> transitions = new LinkedHashSet<Transition>() {};
+		Set<Vertex> allStates = new LinkedHashSet<Vertex>();
+		for (Vertex v : region.getSubvertices())
+			if (v instanceof Pseudostate)
+				if (initialState != null)
+					return null; // Ignore for now since controller is malformed
+				else
+					initialState = v;
+			else if (v instanceof State)
+				allStates.add(v);
 		
-		for (Transition trans: r.getTransitions())
-			if (trans instanceof Transition) 
-				transitions.add(trans);
-				
-		//Find Initial state
-		for (Vertex v : r.getSubvertices())
-			if (v instanceof Pseudostate) 
-				initialState = v;
-			else if(v instanceof State)
-				intermediatestates.add(v);
+		if (initialState == null)
+			return null; // Ignore for now since controller is malformed
+		allStates.add(initialState);
 		
-		
-		Set<Vertex> intermediatestatesCurrentlyReached = new LinkedHashSet<Vertex>() {};
-		
-		Set<Vertex> foundThisRound = new LinkedHashSet<Vertex>() {};
+		// Find all reachable states
+		Set<Vertex> reachedStates = new LinkedHashSet<Vertex>();
+		reachedStates.add(initialState);
+		boolean found_some = false;
+		do {
+			found_some = false;
+			for (Transition trans: region.getTransitions())
+				if (reachedStates.contains(trans.getSource()) && reachedStates.add(trans.getTarget()))
+					found_some = true;
+		} while (found_some);
 
+		// Check if all states are reachable
+		if (allStates.size() == reachedStates.size())
+			return null; // All is good
 		
-		//Seed the states that are reachable from initialState
-		for (Transition trans: transitions)
-			if(trans.getSource() == initialState)
-				foundThisRound.add(trans.getTarget());
-
-		
-		//When we no longer find new states in a round we stop
-		while (!foundThisRound.isEmpty()){
-			
-			//Add all we found to intermediatestatesCurrentlyReached
-			intermediatestatesCurrentlyReached.addAll(foundThisRound);
-			
-			//reset set
-			foundThisRound = new LinkedHashSet<Vertex>() {};
-			
-			//for every reached state
-			for (Vertex reached: intermediatestatesCurrentlyReached)
-				//Check all transitions
-				for (Transition trans: transitions) 
-					//If a transitions source is reached
-					if (trans.getSource() == reached) 
-						//If we haven't added it already
-						if (!intermediatestatesCurrentlyReached.contains(trans.getTarget()))
-							//We found it this round
-							foundThisRound.add(trans.getTarget());
-		}
-
-		//If all states are reached we return null
-		if (intermediatestatesCurrentlyReached.equals(intermediatestates))
-			return null;
-				
-		intermediatestates.removeAll(intermediatestatesCurrentlyReached);
-		
-		return "Cannot reach all states (e.g. " + intermediatestates.iterator().next() + " is not reachable.";
+		allStates.removeAll(reachedStates);
+		return "Cannot reach all states (e.g. '" + allStates.iterator().next().getName() + "' is not reachable).";
 	}
 	
 	@Override
 	public String getErrorMSG(EObject target) {
 		if (target == null)
-			return ConstraintInterface.super.getErrorMSG(null);
+			return "(Error message depends on context.)"; // Used to generate constraint documentation
 		
 		Controller con = (Controller) target;
-		
-		Region r = con.getBase_StateMachine().getRegions().get(0);
-		String res = UnreachableStates(r);
-		if (res == null)
-			return "";
-		return res;
+		Region region = con.getBase_StateMachine().getRegions().get(0);
+		String res = UnreachableStates(region);
+		return res != null ? res : "Attempted to get error message for non-faulty controller. This is a coding error.";
 	}
 	
 	@Override
 	public String getRationale() {
-		String rat = "An unreachable state is useless and only adds confusion.";
-		return rat;
+		return "Unreachable states have no function and are thus disallowed.";
 	}
 	
 	@SuppressWarnings("serial")

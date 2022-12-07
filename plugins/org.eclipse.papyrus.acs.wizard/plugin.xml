@@ -4,30 +4,68 @@
 
 <plugin>
 	<extension point="org.eclipse.ui.newWizards">
-		<wizard category="org.eclipse.papyrus.wizards.category"
-			class="org.eclipse.papyrus.acs.wizard.wizard.NewACSProjectWizard"
-			finalPerspective="org.eclipse.papyrus.acs.perspective"
-			id="org.eclipse.papyrus.acs.wizard.createproject"
-			name="ACS project"
-			project="true">
+		<wizard
+        category="org.eclipse.papyrus.wizards.category"
+        class="org.eclipse.papyrus.acs.wizard.wizard.NewACSProjectWizard"
+        finalPerspective="org.eclipse.papyrus.acs.perspective"
+        id="org.eclipse.papyrus.acs.wizard.createproject"
+        name="ACS project"
+        project="true">
+	        <description>
+		    	Create a new ACS Project with a standard, empty ACS model template.
+		    </description>
 		</wizard>
 		<wizard
-			category="org.eclipse.papyrus.wizards.category"
-			class="org.eclipse.papyrus.acs.wizard.wizard.NewACSModelWizard"
-			finalPerspective="org.eclipse.papyrus.acs.perspective"
-			id="org.eclipse.papyrus.acs.wizard.createmodel"
-			name="ACS model">
+        category="org.eclipse.papyrus.wizards.category"
+        class="org.eclipse.papyrus.acs.wizard.wizard.NewACSModelWizard"
+        finalPerspective="org.eclipse.papyrus.acs.perspective"
+        id="org.eclipse.papyrus.acs.wizard.createmodel"
+        name="ACS model">
+	        <description>
+		    	Create a new ACS model within an existing ACS project.
+		    </description>
 		</wizard>
+  <wizard
+        category="org.eclipse.ui.Examples/org.eclipse.papyrus.examples"
+        class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+        finalPerspective="org.eclipse.papyrus.acs.perspective"
+        icon="icons/structure.gif"
+        id="org.eclipse.papyrus.acs.sample.test"
+        name="ACS Example Model (...)"
+        preferredPerspectives="org.eclipse.papyrus.acs.perspective"
+        project="true">
+     <description>
+        Create a new Project that contains an example ACS model.
+     </description>
+  </wizard>
 	</extension>
 
-	<extension point="org.eclipse.papyrus.uml.diagram.wizards.templates">
-		<template
-			di_file="resources/template.acs.di"
-			notation_file="resources/template.acs.notation"
-			file="resources/template.acs.uml"
-			id="org.eclipse.papyrus.acs.wizard.template.acs"
-			language="org.eclipse.papyrus.acs.viewpoint.building"
-			name="A composite definition model">
-		</template>
-	</extension>
+ <extension
+       point="org.eclipse.papyrus.uml.diagram.wizards.templates">
+    <template
+          di_file="resources/template.acs.di"
+          file="resources/template.acs.uml"
+          id="org.eclipse.papyrus.acs.wizard.template.acs"
+          language="org.eclipse.papyrus.acs.viewpoint.building"
+          name="A composite definition model"
+          notation_file="resources/template.acs.notation">
+    </template>
+ </extension>
+ 
+ <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            id="org.eclipse.papyrus.acs.samplemodel.car"
+            pageImage="icons/structure.gif"
+            wizardID="org.eclipse.papyrus.acs.sample.test">
+         <projectDescriptor
+               contentURI="sample/Models/"
+               description="Project containing a sample model"
+               name="ACS Model Example">
+         </projectDescriptor>
+         <fileToOpen
+               location="sample/Models/test.acs.di">
+         </fileToOpen>
+      </example>
+   </extension>
 </plugin>

@@ -25,30 +25,57 @@
 package org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceConnection;
 
 import java.util.LinkedList;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.acs.validation.Constraints.Functions.ConstraintInterface;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.papyrus.acs.profile.model.AtomicSystem;
+import org.eclipse.papyrus.acs.profile.model.Composite;
 import org.eclipse.papyrus.acs.profile.model.InterfaceConnection;
+import org.eclipse.papyrus.acs.profile.model.SoI;
 
 public class ContainerPortAndInterfaceConnectionHaveSameParent implements ConstraintInterface {
 
 	@Override
 	public boolean satisfies(EObject target) {
 		InterfaceConnection icon = (InterfaceConnection) target;
-		Element one = (Element) icon.getBase_Connector().getEnds().get(0).getRole().eContainer();
-		if (one.getStereotypeApplications().get(0) instanceof AtomicSystem)
-			one = (Element) one.eContainer();
-		Element two = (Element) icon.getBase_Connector().getEnds().get(1).getRole().eContainer();
-		if (one.getStereotypeApplications().get(0) instanceof AtomicSystem)
-			one = (Element) one.eContainer();
-		return one == two;
+		
+		var parentOfAS = getParentOfAtomicSystemEnd(icon);
+		if (parentOfAS.isEmpty())
+			return true; // Ignore until not malformed
+		
+		var containerAtContainerEnd = getContainerAtContainerEnd(icon);
+		if (containerAtContainerEnd.isEmpty())
+			return true; // Ignore until not malformed
+		
+		return parentOfAS.get() == containerAtContainerEnd.get();
 	}
+	
+	private Optional<EObject> getParentOfAtomicSystemEnd(InterfaceConnection icon) {
+		return icon.getBase_Connector()
+			.getEnds().stream()
+			.map(end -> (Element)end.getRole().eContainer())
+			.filter(element -> element.getStereotypeApplications().get(0) instanceof AtomicSystem)
+			.map(element -> element.eContainer())
+			.findFirst();
+	}
+	
+	private Optional<EObject> getContainerAtContainerEnd(InterfaceConnection icon) {
+		return icon.getBase_Connector()
+				.getEnds().stream()
+				.map(end -> (Element)end.getRole().eContainer())
+				.filter(element -> 
+					element.getStereotypeApplications().get(0) instanceof Composite ||
+					element.getStereotypeApplications().get(0) instanceof SoI
+				).map(element -> (EObject)element)
+				.findFirst();
+	}
+	
 	
 	@Override
 	public String getErrorMSG(EObject target) { 
-		return "Port and InterfaceConnection must have same parent.";
+		return "Interface connection must connect an Atomic System and it's immediate parent.";
 	}
 	
 	@Override
@@ -60,6 +87,6 @@ public class ContainerPortAndInterfaceConnectionHaveSameParent implements Constr
 	@SuppressWarnings("serial")
 	@Override
 	public LinkedList<Class<?>> appliesTo() {
-		return new LinkedList<Class<?>> () {{ add(InterfaceConnection.class);}};
+		return new LinkedList<Class<?>> () {{ add(InterfaceConnection.class); }};
 	}
 }

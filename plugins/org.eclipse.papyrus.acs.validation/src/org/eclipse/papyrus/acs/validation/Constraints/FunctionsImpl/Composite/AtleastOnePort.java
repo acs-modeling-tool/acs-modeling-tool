@@ -54,6 +54,6 @@ public class AtleastOnePort implements ConstraintInterface {
 	@SuppressWarnings("serial")
 	@Override
 	public LinkedList<Class<?>> appliesTo() {
-		return new LinkedList<Class<?>> () {{ add(Composite.class);}};
+		return new LinkedList<Class<?>> () {{ add(Composite.class); }};
 	}
 }

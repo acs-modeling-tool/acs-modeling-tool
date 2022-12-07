@@ -58,7 +58,6 @@ import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.CONIntermedi
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Composite.AtleastOnePort;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.AllStatesReachable;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.AtleastOneTransition;
-import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.NoStateIsDeadEnd;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.Controller.ExactlyOneInitialNode;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceConnection.ConnectedToAtomicSystemPort;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.InterfaceConnection.ConnectedToContainerPort;
@@ -78,6 +77,7 @@ import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.shared.Conta
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.shared.HasSystemCardinality;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.shared.MustHaveSourceAndTarget;
 import org.eclipse.papyrus.acs.validation.Constraints.FunctionsImpl.shared.NameCannotStartWithDigit;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.internal.impl.PackageImportImpl;
 
 @SuppressWarnings("restriction")
@@ -123,65 +123,77 @@ public abstract class Utils {
 	}};
 
 	
-	@SuppressWarnings({ "serial" })
-	public static final LinkedList<Class<?>> uml_element = new LinkedList<Class<?>>(){{ 
+	@SuppressWarnings("serial")
+	public static final LinkedList<Class<?>> validatable_types = new LinkedList<Class<?>>(){{ 
 		add(PackageImportImpl.class); 
 	}};
 	
 	/*To get the name of anything I have to get the UML object and get the name since that is where the name is stored*/
 	public static String getName(EObject target) {
-		String name = null;
 		if (target == null)
 			return "Cannot get name of null!";
-    	if (target instanceof System)
-    		name = ((System) target).getBase_Component().getName();
-    	else if (target instanceof SoI)
-    		name = ((SoI) target).getBase_Component().getName();
-    	else if (target instanceof ACS_Model)
-    		name = ((ACS_Model) target).getBase_Model().getName();
-    	else if (target instanceof Port)
-    		name = ((Port) target).getBase_Port().getName();
-    	else if (target instanceof LinkConnection)
-    		name = ((LinkConnection) target).getBase_Connector().getName();
-    	else if (target instanceof InterfaceConnection)
-    		name = ((InterfaceConnection) target).getBase_Connector().getName();
-    	else if (target instanceof LinkHub)
-    		name = ((LinkHub) target).getBase_Port().getName();
-    	else if (target instanceof Controller)
-    		name = ((Controller) target).getBase_StateMachine().getName();
-    	else if (target instanceof EventDeclaration)
-    		name = ((EventDeclaration) target).getBase_StateMachine().getName();
-    	else if (target instanceof ActionTransition)
-    		name = ((ActionTransition) target).getBase_Transition().getName();
-    	else if (target instanceof CONStartState)
-    		name = ((CONStartState) target).getBase_Pseudostate().getName();
-    	else if (target instanceof CONIntermediateState)
-    		name = ((CONIntermediateState) target).getBase_State().getName();
-    	else if (target instanceof LinkHolder)
-    		name = ((LinkHolder) target).getBase_Component().getName();
-    	else if (target instanceof COMStartState)
-    		name = ((COMStartState) target).getBase_Pseudostate().getName();
-    	else if (target instanceof COMIntermediateState)
-    		name = ((COMIntermediateState) target).getBase_State().getName();
-    	else if (target instanceof COMEndState)
-    		name = ((COMEndState) target).getBase_State().getName();
-    	else if (target instanceof Declared_Type)
-    		name = ((Declared_Type) target).getBase_Class().getName();
-    	else if (target instanceof MainMachine)
-    		name = ((MainMachine) target).getBase_Region().getName();
-    	else if (target instanceof SubMachine)
-    		name = ((SubMachine) target).getBase_Region().getName();
-    	else if (target instanceof ImplicitMachine)
-    		name = ((ImplicitMachine) target).getBase_Region().getName();
-    	else 
-    		return "Cannot get name of: " + target.toString();
+		
+		EObject base = getBase(target);
+		if (base == null)
+			return "Cannot get base (in order to get name) of: " + target.toString();
+
+		String name = ((NamedElement)base).getName();
     	if (name == null)
     		return "Name was null on: " + target.toString();
+    	
     	return name;
 	}
 	
+	public static EObject getBase(EObject target) {
+		if (target == null)
+			return null;
+		
+    	if (target instanceof System)
+    		return ((System) target).getBase_Component();
+    	else if (target instanceof SoI)
+    		return ((SoI) target).getBase_Component();
+    	else if (target instanceof ACS_Model)
+    		return ((ACS_Model) target).getBase_Model();
+    	else if (target instanceof Port)
+    		return ((Port) target).getBase_Port();
+    	else if (target instanceof LinkConnection)
+    		return ((LinkConnection) target).getBase_Connector();
+    	else if (target instanceof InterfaceConnection)
+    		return ((InterfaceConnection) target).getBase_Connector();
+    	else if (target instanceof LinkHub)
+    		return ((LinkHub) target).getBase_Port();
+    	else if (target instanceof Controller)
+    		return ((Controller) target).getBase_StateMachine();
+    	else if (target instanceof EventDeclaration)
+    		return ((EventDeclaration) target).getBase_StateMachine();
+    	else if (target instanceof ActionTransition)
+    		return ((ActionTransition) target).getBase_Transition();
+    	else if (target instanceof CONStartState)
+    		return ((CONStartState) target).getBase_Pseudostate();
+    	else if (target instanceof CONIntermediateState)
+    		return ((CONIntermediateState) target).getBase_State();
+    	else if (target instanceof LinkHolder)
+    		return ((LinkHolder) target).getBase_Component();
+    	else if (target instanceof COMStartState)
+    		return ((COMStartState) target).getBase_Pseudostate();
+    	else if (target instanceof COMIntermediateState)
+    		return ((COMIntermediateState) target).getBase_State();
+    	else if (target instanceof COMEndState)
+    		return ((COMEndState) target).getBase_State();
+    	else if (target instanceof Declared_Type)
+    		return ((Declared_Type) target).getBase_Class();
+    	else if (target instanceof MainMachine)
+    		return ((MainMachine) target).getBase_Region();
+    	else if (target instanceof SubMachine)
+    		return ((SubMachine) target).getBase_Region();
+    	else if (target instanceof ImplicitMachine)
+    		return ((ImplicitMachine) target).getBase_Region();
+    	else 
+    		throw new RuntimeException("Cannot get base of object: " + target.toString());
+	}
+	
 	@SuppressWarnings("serial")
-	public static LinkedList<ConstraintInterface> constraintInterfaces = new LinkedList<ConstraintInterface>() {
+	public static LinkedList<ConstraintInterface> allConstraints = new LinkedList<ConstraintInterface>() {
 		{
 			/*Atomic System*/
 			add(new ExactlyOnePort());
@@ -189,21 +201,12 @@ public abstract class Utils {
 			/*Composite*/
 			add(new AtleastOnePort());
 
-			/*CONIntermediateState*/
-			add(new NotADeadEnd());
-			
-			/*Controller*/
-			add(new AllStatesReachable());
-			add(new AtleastOneTransition());
-			add(new ExactlyOneInitialNode());
-			add(new NoStateIsDeadEnd());
-
 			/*InterfaceConnection*/
 			add(new ConnectedToAtomicSystemPort());
 			add(new ConnectedToContainerPort());
 			add(new ContainerPortAndInterfaceConnectionHaveSameParent());
 
-			/*Link Connection*/
+			/*LinkConnection*/
 			add(new DoesntCrossSystemBoundry());
 			add(new IsBetweenPortAndLinkhub());
 			add(new LinkCardinalityNotGreaterThanSystemCardinality());
@@ -223,7 +226,19 @@ public abstract class Utils {
 			/*Reference*/
 			add(new PortNameMatchHostPortName());
 			add(new ReferencedSoINotNull());
+			
+			
+			/*Controller*/
+			add(new AllStatesReachable());
+			add(new AtleastOneTransition());
+			add(new ExactlyOneInitialNode());
 
+			/*CONIntermediateState*/
+			add(new NotADeadEnd());
+			
+			/*ActionTransition*/
+
+			
 			/*Shared*/
 			add(new ContainAtleastTwoSystems());
 			add(new HasSystemCardinality());
@@ -231,8 +246,4 @@ public abstract class Utils {
 			add(new NameCannotStartWithDigit());
 		}
 	};
-
-	public static String getMSG(ConstraintInterface constraint) {
-		return constraint.getClass().getSimpleName() + " defines no specific error message.";
-	}
 }

@@ -10,10 +10,4 @@
             isCustomizable="true"/>
    </extension>
    
-   	<extension
-			point="org.eclipse.papyrus.infra.architecture.listeners">
-		<listener
-				class="org.eclipse.papyrus.acs.properties.internal.PropertiesHider">
-		</listener>
-	</extension>
 </plugin>

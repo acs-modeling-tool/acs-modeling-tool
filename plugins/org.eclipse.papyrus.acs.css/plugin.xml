@@ -13,43 +13,12 @@
       </themeDefinition>
       <themeContribution
             id="org.eclipse.papyrus.acs.theme">
-         <stylesheet stylesheetPath="theme/theme_acs.css">
+         <stylesheet
+               stylesheetPath="theme/theme_acs.css">
          </stylesheet>
       </themeContribution>
    </extension>
 
 <!-- extensions that show a way to provide an example model (using EMF Tooling) -->
-   <extension
-         point="org.eclipse.emf.common.ui.examples">
-      <example
-            id="org.eclipse.papyrus.acs.samplemodel.car"
-            pageImage="icons/atomic_big.gif"
-            wizardID="org.eclipse.papyrus.acs.sample.test">
-         <projectDescriptor
-               contentURI="sample/Models/"
-               description="Project containing a sample model"
-               name="ACS Model Example">
-         </projectDescriptor>
-         <fileToOpen
-               location="sample/Models/test.acs.di">
-         </fileToOpen>
-      </example>
-   </extension>
    
-   <extension
-         point="org.eclipse.ui.newWizards">
-      <wizard
-            category="org.eclipse.ui.Examples/org.eclipse.papyrus.examples"
-            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-            finalPerspective="org.eclipse.papyrus.infra.core.perspective"
-            icon="icons/atomic_big.gif"
-            id="org.eclipse.papyrus.acs.sample.test"
-            name="ACS Example Model"
-            preferredPerspectives="org.eclipse.papyrus.infra.core.perspective"
-            project="true">
-         <description>
-            Create a new Project that contains an example of an acs model in Papyrus
-         </description>
-      </wizard>
-   </extension>
 </plugin>
