@@ -19,6 +19,14 @@ The "Profile Plugin" adds the UML metamodel of ACS to Papyrus. This is where all
 
 `model/model.profile.genmodel`: This file is used to generate source-code/classes for all model elements in a Profile (i.e., ACS elements in our case).
 
+Firstly, to create the `model/model.profile.*` files:
+- Create a folder to contain the model files in the "Project Explorer"-view.
+    - We'll refer to it as `[your_profile]`.
+- Right-click this folder and select "New > Papyrus Model".
+- Under "Architecture Contexts" select the "Profile"-context.
+- Press finish.
+    - This will create the `[your_profile].profile.[di|uml|notation]`-files in the `[your_profile]`-folder.
+
 To generate a `.genmodel`-file and `.ecore`-file:
 - Right-click (preferably) the folder in which you have your Profile files (i.e., `*.profile.[di|uml|notation]`) and press "New > Other".
 - Search for "gen" and select the "EMF Generator Model".
@@ -36,7 +44,7 @@ To generate source-code from the `.genmodel`-file:
     - First, right-click the `.genmodel`-file and press "Open". (To our knowledge, this is the only way to open it.)
     - Left-click the root element that states the name of your profile and go to the "properties view" in Eclipse Modeling Tools.
     - Scroll down to the "Model" category
-    - In "Model Directory", add "-gen" at the end of the path to output files to "src-gen" instead of "src".
+    - In "Model Directory", add "-gen" at the end of the path to output files to "`src-gen`" instead of "`src`".
 - In the `.genmodel`-tree-view, open the root element and right-click the sub-element that represents your Profile.
 - Press "generate model code".
 

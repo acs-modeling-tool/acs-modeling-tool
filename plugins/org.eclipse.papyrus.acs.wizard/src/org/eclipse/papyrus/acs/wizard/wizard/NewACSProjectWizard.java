@@ -161,8 +161,8 @@ public class NewACSProjectWizard extends NewACSModelWizard {
 						String os_sep = FileSystems.getDefault().getSeparator();
 
 						//Make an appropriate location
-						String QuickStartPath = documentation.getRawLocationURI().getPath() + os_sep + "QuickStart.md";
-						String fullguidePath = documentation.getRawLocationURI().getPath() + os_sep + "FullGuide.md";
+						String QuickStartPath = documentation.getLocation().toPortableString().replace("/", os_sep) + os_sep + "QuickStart.md";
+						String fullguidePath = documentation.getLocation().toPortableString().replace("/", os_sep) + os_sep + "FullGuide.md";
 						
 						//Create the files
 						if (new File(QuickStartPath).createNewFile()) {
