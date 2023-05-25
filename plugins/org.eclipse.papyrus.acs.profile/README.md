@@ -39,12 +39,11 @@ To generate a `.genmodel`-file and `.ecore`-file:
     - The "root packages" are those Eclipse should generate code for, whereas "reference generator models" are dependencies, but which we do not generate code for.
 - Press "Finish" and your `.ecore`- and `.genmodel`-files should both show up in the folder you specified.
 
-To generate source-code from the `.genmodel`-file:
-- If you want to generate code-files in a folder separate from your `src/`-folder:
-    - First, right-click the `.genmodel`-file and press "Open". (To our knowledge, this is the only way to open it.)
-    - Left-click the root element that states the name of your profile and go to the "properties view" in Eclipse Modeling Tools.
-    - Scroll down to the "Model" category
-    - In "Model Directory", add "-gen" at the end of the path to output files to "`src-gen`" instead of "`src`".
+To generate the `src-gen/*`-files from the `.genmodel`-file:
+- First, right-click the `.genmodel`-file and press "Open". (To our knowledge, this is the only way to open it.)
+- Left-click the root element that states the name of your profile and go to the "properties view" in Eclipse Modeling Tools.
+- Scroll down to the "Model" category
+- In "Model Directory", add "`-gen`" at the end of the path to output files to "`src-gen`" instead of "`src`".
 - In the `.genmodel`-tree-view, open the root element and right-click the sub-element that represents your Profile.
 - Press "generate model code".
 
