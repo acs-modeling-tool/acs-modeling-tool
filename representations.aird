@@ -1401,14 +1401,5 @@
   <semanticResources>plugins/org.eclipse.papyrus.acs.wizard/target/local-artifacts.properties</semanticResources>
   <semanticResources>plugins/org.eclipse.papyrus.acs.wizard/target/maven-archiver/pom.properties</semanticResources>
   <semanticResources>plugins/org.eclipse.papyrus.acs.wizard/target/sourcebundle-l10n-gen/OSGI-INF/l10n/bundle-src.properties</semanticResources>
-  <semanticResources>profile_parts/behavior/beh.profile.di</semanticResources>
-  <semanticResources>profile_parts/behavior/beh.profile.notation</semanticResources>
-  <semanticResources>profile_parts/behavior/beh.profile.uml</semanticResources>
-  <semanticResources>profile_parts/data/dat.profile.di</semanticResources>
-  <semanticResources>profile_parts/data/dat.profile.notation</semanticResources>
-  <semanticResources>profile_parts/data/dat.profile.uml</semanticResources>
-  <semanticResources>profile_parts/structure/str.profile.di</semanticResources>
-  <semanticResources>profile_parts/structure/str.profile.notation</semanticResources>
-  <semanticResources>profile_parts/structure/str.profile.uml</semanticResources>
   <semanticResources>plugins/org.eclipse.papyrus.acs.profile/test/test.profile.notation</semanticResources>
 </viewpoint:DAnalysis>
