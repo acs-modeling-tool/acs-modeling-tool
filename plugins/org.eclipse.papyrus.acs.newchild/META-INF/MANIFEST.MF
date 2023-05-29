@@ -3,11 +3,11 @@ Bundle-SymbolicName: org.eclipse.papyrus.acs.newchild;singleton:=true
 Export-Package: org.eclipse.papyrus.acs.newchild,
  org.eclipse.papyrus.acs.newchild.internal
 Bundle-Name: %Bundle-Name
-Bundle-Version: 3.0.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.ui;bundle-version="[3.201.0,4.0.0)",
  org.eclipse.gmf.runtime.emf.type.core;bundle-version="[1.9.0,2.0.0)";visibility:=reexport,
  org.eclipse.papyrus.infra.newchild;bundle-version="[5.0.0,6.0.0)",
- org.eclipse.papyrus.acs.properties;bundle-version="3.0.0"
+ org.eclipse.papyrus.acs.properties;bundle-version="1.0.0"
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.eclipse.papyrus.acs.newchild.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-11

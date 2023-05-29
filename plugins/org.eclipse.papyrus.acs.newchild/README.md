@@ -19,4 +19,4 @@ The plugin-file contains a single "extension" that registers the four `*.creatio
 
 
 ## Dependencies
-This plugin depends on the "Palette"-plugin to get access to the `[palette]/resources/model_shapes.elementtypeconfigurations`-file (see "Palette"-plugin for more).
+This plugin depends on the "Palette"-plugin to get access to the `[palette]/resources/model_shapes.elementtypeconfigurations`-file (see "Palette"-plugin for more) and the "Profile" plugin to get information about ACS elements/stereotypes.

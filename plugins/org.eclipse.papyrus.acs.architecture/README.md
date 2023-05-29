@@ -28,4 +28,4 @@ The plugin-file contains a single "extension" that registers the `resources/acs.
 
 
 ## Dependencies
-This plugin depends on contents from the "Wizard" and the "Palette" plugins.
+This plugin depends on contents from the "Wizard" and the "Palette" plugins. It also depends on the "Profile" plugin for information about ACS elements/stereotypes.

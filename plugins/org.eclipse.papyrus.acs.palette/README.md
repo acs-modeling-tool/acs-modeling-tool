@@ -17,4 +17,4 @@ The plugin-file contains a single "extension" that registers the `model_shapes.e
 
 
 ## Dependencies
-This plugin indirectly depends on the Profile plugin, since the `model_shapes.elementtypesconfigurations`-file from "Palette" is a copy of the `model/model.elementtypesconfigurations`-file which has been extended with additional, extended element types (simply with more details on them), that are needed in Papyrus to determine how Papyrus should draw the elements in the model/diagram editor (e.g. similar to a component, similar to a class, similar to a state machine, etc.)
+This plugin indirectly depends on the "Profile" plugin, since the `model_shapes.elementtypesconfigurations`-file from "Palette" is a copy of the `model/model.elementtypesconfigurations`-file which has been extended with additional, extended element types (simply with more details on them), that are needed in Papyrus to determine how Papyrus should draw the elements in the model/diagram editor (e.g. similar to a component, similar to a class, similar to a state machine, etc.)

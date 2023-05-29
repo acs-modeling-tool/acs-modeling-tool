@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: org.eclipse.papyrus.acs.hyperlink;singleton:=true
-Bundle-Version: 3.0.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.eclipse.papyrus.infra.hyperlink;bundle-version="[4.0.0,5.0.0)";visibility:=reexport,
  org.eclipse.gmf.runtime.notation;bundle-version="[1.10.0,2.0.0)",

@@ -19,4 +19,4 @@ The plugin-file contains a single "extension" that registers the `org.eclipse.pa
 
 
 ## Dependencies
-This plugin does not depend on any other ACS plugins
+This plugin depends on the "Profile" plugin to recognize the types of elements to navigate to.

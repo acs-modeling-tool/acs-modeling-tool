@@ -5,7 +5,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	<parent>
 		<artifactId>org.eclipse.papyrus.acs.tests</artifactId>
 		<groupId>org.eclipse.papyrus.acs</groupId>
-		<version>3.0.0-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.eclipse.papyrus.acs.tests.profile</artifactId>
 	<packaging>pom</packaging>

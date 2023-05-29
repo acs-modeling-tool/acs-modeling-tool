@@ -15,4 +15,4 @@ The plugin-file contains a single "extension" that registers `AtomicToController
 
 
 ## Dependencies
-This plugin does not depend on any othe plugins.
+This plugin does not currently depend on any other plugins, but will depend on the "Profile" plugin in the future to recognize the types of elements to link to.

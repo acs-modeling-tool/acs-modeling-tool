@@ -13,7 +13,7 @@ Export-Package: org.eclipse.papyrus.acs.profile,
  org.eclipse.papyrus.acs.profile.model.impl,
  org.eclipse.papyrus.acs.profile.model.util
 Bundle-Name: %Bundle-Name
-Bundle-Version: 3.0.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Bundle-Activator: org.eclipse.papyrus.acs.profile.Activator
